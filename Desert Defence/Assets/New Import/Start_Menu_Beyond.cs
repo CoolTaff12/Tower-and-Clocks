@@ -7,15 +7,20 @@ public class Start_Menu_Beyond : MonoBehaviour
 	public Texture2D HowToPlay;
 	public Texture2D Credit;
 	public Texture2D Options;
-	public Texture2D MainMenu;
+	public Texture2D startGame;
 	public Texture2D Play;
 	public Texture2D Tutorial;
 	public Texture2D lvl1;
 	public Texture2D lvl2;
-//	public Texture2D lvl3;
+
+	//---------------------------------------
+	public Texture2D quit;
+	public Texture2D MainMenu;
 	public Texture2D Next;
 	public Texture2D Back;
-	
+	public Texture2D Yes;
+	public Texture2D No;
+
 	//--------------------------------------
 
 	public GUISkin trueMenu;
@@ -30,9 +35,6 @@ public class Start_Menu_Beyond : MonoBehaviour
 	public Texture2D HTP2;
 	public Texture2D HTP3;
 	public Texture2D HTP4;
-	public Texture2D HTP5;
-	public Texture2D HTP6;
-	public Texture2D HTP7;
 	
 	//--------------------------------------
 
@@ -81,53 +83,63 @@ public class Start_Menu_Beyond : MonoBehaviour
 		case MenuStates.How_To_Play2:
 			DrawHow_To_Play2();
 			break;
-		/*case MenuStates.How_To_Play3:
+		case MenuStates.How_To_Play3:
 			DrawHow_To_Play3();
 			break;
 		case MenuStates.How_To_Play4:
 			DrawHow_To_Play4();
-			break;*/
+			break;
 		case  MenuStates.Lvl:
 			DrawConfirmLvl();
 			break;
 		case  MenuStates.Options:
 			DrawOptions();
 			break;
-		/*case  MenuStates.Confirm_Quit:
+		case  MenuStates.Confirm_Quit:
 			DrawConfirmQuit();
-			break;*/
+			break;
 		}
 	}
 	private void DrawMainScreen() 
 	{
-		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 280, 412, 101), ""))
+		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 400, 412, 101), ""))
 		{
 			currState = MenuStates.Lvl;
 		}
-		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 280, 412, 101), Play);
+		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 400, 412, 101), startGame);
 		// Option Button
-		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 160, 412, 101), ""))
+		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 280, 412, 101), ""))
 		{
 			currState = MenuStates.How_To_Play;
 		}
-		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 160, 412, 101), HowToPlay);
+		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 280, 412, 101), HowToPlay);
 		// How to Play Button
-		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 40, 412, 101), ""))
+		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 160, 412, 101), ""))
 		{
 			currState = MenuStates.Options;
 		}
-		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 40, 412, 101), Options);
+		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 160, 412, 101), Options);
+		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 40, 412, 101), ""))
+		{
+			currState = MenuStates.Confirm_Quit;
+		}
+		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 40, 412, 101), quit);
 	}
 
 	//---------------------------------------------------------------
 
 	private void DrawConfirmLvl()
 	{
-		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 200, 412, 101), ""))
+		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 300, 412, 101), ""))
 		{
 			//	currState = MenuStates.Lvl;
 		}
-		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 200, 412, 101), Tutorial);
+		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 300, 412, 101), Play);
+		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 180, 412, 101), ""))
+		{
+			//	currState = MenuStates.Lvl;
+		}
+		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 180, 412, 101), Tutorial);
 		if (GUI.Button (new Rect(Screen.width - 300, Screen.height, 412, 101), ""))
 		{
 			currState = MenuStates.Main;
@@ -142,18 +154,8 @@ public class Start_Menu_Beyond : MonoBehaviour
 	{
 		GUI.Box (new Rect (140, 20, 1000, 110),"");
 		GUI.Label(new Rect(140, 20, 1000, 110),"\tBasic Rules"); 
-		GUI.TextField (new Rect (40, 130, Screen.width, 560),""/*"Your objective is to prevent the enemies to reach your base." +
-		               "\nEach enemy that manages to reach your base will decrease" + 
-		               "\nyour current health or so called [HP]. If your HP gets to 0" + 
-		           "\nthe game is over." +
-		               "\n\nTo protect the base, you need to use your main tools " + 
-		               "\nof defense, your towers." +
-		               "\nTo build a Tower, you need Gears, which you get" +
-		               "\nby destroying enemies."*/
-		         );
-		GUI.DrawTexture(new Rect(Screen.width + 200, Screen.height - 450, 222, 170), HTP1);
-	//	GUI.DrawTexture(new Rect(Screen.width + 200, Screen.height - 270, 222, 170), HTP2);
-	//	GUI.DrawTexture(new Rect(Screen.width + 200, Screen.height - 90, 222, 170), HTP3);
+		GUI.DrawTexture (new Rect (Screen.width - 750, 130, 1200, 560),HTP1);
+	//	GUI.DrawTexture(new Rect(Screen.width + 200, Screen.height - 450, 222, 170), HTP1);
 		if (GUI.Button (new Rect(Screen.width - 360, Screen.height + 100, 412, 101), ""))
 		{
 			currState = MenuStates.Main;
@@ -170,23 +172,9 @@ public class Start_Menu_Beyond : MonoBehaviour
 	{
 		GUI.Box (new Rect (140, 20, 1000, 110),"");
 		GUI.Label(new Rect(140, 20, 1000, 110),"\tTowers"); 
+		GUI.DrawTexture(new Rect (Screen.width - 750, 130, 1200, 560),HTP2);
 
-		GUI.Box(new Rect (40, 130, 1200, 560), "\nAssault" +
-"\nThe Assault Tower is the standard tower with the most balanced stats");
-		/*Assault
-The Assault Tower is the standard tower with the most balanced stats
 
-Laser
-The Laser Tower will apply a Damage over Time effect on the enemy
-
-Frost
-The Frost Tower will slow the enemy for a short period of time
-
-Mortar
-Each bullet that hits the enemy will make an Area of Effect, damaging nearby enemies
-
-Tip: If an Enemy is Slowed and is hit by the Laser, the slow effect is removed, however, that enemy will take 2x Damage over Time.
-*/
 		if (GUI.Button (new Rect(Screen.width - 360, Screen.height + 100, 412, 101), ""))
 		{
 			currState = MenuStates.Main;
@@ -194,12 +182,55 @@ Tip: If an Enemy is Slowed and is hit by the Laser, the slow effect is removed, 
 		GUI.DrawTexture(new Rect(Screen.width - 360, Screen.height + 100, 412, 101), MainMenu);
 		if (GUI.Button (new Rect(Screen.width + 220, Screen.height + 110, 200, 67), ""))
 		{
-			//currState = MenuStates.How_To_Play3;
+			currState = MenuStates.How_To_Play3;
 		}
 		GUI.DrawTexture(new Rect(Screen.width + 220, Screen.height + 110, 200, 67), Next);
 		if (GUI.Button (new Rect(Screen.width - 740, Screen.height + 110, 200, 67), ""))
 		{
 			currState = MenuStates.How_To_Play;
+		}
+		GUI.DrawTexture(new Rect(Screen.width - 740, Screen.height + 110, 200, 67), Back);
+	}
+
+	private void DrawHow_To_Play3()
+	{
+		GUI.Box (new Rect (140, 20, 1000, 110),"");
+		GUI.Label(new Rect(140, 20, 1000, 110),"\tEnemies");
+		GUI.DrawTexture(new Rect (Screen.width - 750, 130, 1200, 560),HTP3);
+		
+		
+		if (GUI.Button (new Rect(Screen.width - 360, Screen.height + 100, 412, 101), ""))
+		{
+			currState = MenuStates.Main;
+		}
+		GUI.DrawTexture(new Rect(Screen.width - 360, Screen.height + 100, 412, 101), MainMenu);
+		if (GUI.Button (new Rect(Screen.width + 220, Screen.height + 110, 200, 67), ""))
+		{
+			currState = MenuStates.How_To_Play4;
+		}
+		GUI.DrawTexture(new Rect(Screen.width + 220, Screen.height + 110, 200, 67), Next);
+		if (GUI.Button (new Rect(Screen.width - 740, Screen.height + 110, 200, 67), ""))
+		{
+			currState = MenuStates.How_To_Play2;
+		}
+		GUI.DrawTexture(new Rect(Screen.width - 740, Screen.height + 110, 200, 67), Back);
+	}
+
+	private void DrawHow_To_Play4()
+	{
+		GUI.Box (new Rect (140, 20, 1000, 110),"");
+		GUI.Label(new Rect(140, 20, 1000, 110),"\tInterface");
+		GUI.DrawTexture(new Rect (Screen.width - 750, 130, 1200, 560),HTP4);
+		
+		
+		if (GUI.Button (new Rect(Screen.width - 360, Screen.height + 100, 412, 101), ""))
+		{
+			currState = MenuStates.Main;
+		}
+		GUI.DrawTexture(new Rect(Screen.width - 360, Screen.height + 100, 412, 101), MainMenu);
+		if (GUI.Button (new Rect(Screen.width - 740, Screen.height + 110, 200, 67), ""))
+		{
+			currState = MenuStates.How_To_Play2;
 		}
 		GUI.DrawTexture(new Rect(Screen.width - 740, Screen.height + 110, 200, 67), Back);
 	}
@@ -242,6 +273,34 @@ Tip: If an Enemy is Slowed and is hit by the Laser, the slow effect is removed, 
 		GUI.DrawTexture(new Rect(Screen.width - 760, Screen.height + 100, 412, 101), MainMenu);
 		
 	}
+
+	//------------------------------------------------------------
+	private void DrawConfirmQuit()
+	{
+		GUILayout.BeginArea(new Rect(0, 140, 1280, 800));
+		GUILayout.BeginHorizontal();
+		GUILayout.FlexibleSpace();
+		GUILayout.Label("Do you want to leave us\nand let us bite the dust??");
+		GUILayout.FlexibleSpace();
+		GUILayout.EndHorizontal();
+		GUILayout.EndArea();
+
+
+		if (GUI.Button (new Rect(Screen.width - 460, Screen.height, 300, 114), ""))
+		{
+			Application.Quit();
+		}
+		GUI.DrawTexture(new Rect(Screen.width - 460, Screen.height, 300, 114), Yes);
+
+		if (GUI.Button (new Rect(Screen.width - 120, Screen.height, 300, 114), ""))
+		{
+			currState = MenuStates.Main;
+		}
+		GUI.DrawTexture(new Rect(Screen.width - 120, Screen.height, 300, 114), No);
+	}
+
+
+
 	// Update is called once per frame
 	void Update () 
 	{
