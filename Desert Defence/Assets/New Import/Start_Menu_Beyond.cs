@@ -132,12 +132,12 @@ public class Start_Menu_Beyond : MonoBehaviour
 	{
 		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 300, 412, 101), ""))
 		{
-			//	currState = MenuStates.Lvl;
+			Application.LoadLevel("LevelOne");
 		}
 		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 300, 412, 101), Play);
 		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 180, 412, 101), ""))
 		{
-			//	currState = MenuStates.Lvl;
+			Application.LoadLevel("Tutorial");
 		}
 		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 180, 412, 101), Tutorial);
 		if (GUI.Button (new Rect(Screen.width - 300, Screen.height, 412, 101), ""))
