@@ -38,14 +38,33 @@ public class EnemySpawn : MonoBehaviour
 		public int SpeediesPerWave = 0;
 		public int TanksPerWave = 0;
 		public GameManager gameMgr;
+
+		//
+
+		public Object directionalLight;
 	
 		// Use this for initialization
 		void Start ()
 		{
+				Time.timeScale = 1f;
 				gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 				wave = 1f;
 				spawnTimer = 10;
 		
+		}
+
+		void OnGUI()
+		{
+			if (wave > 12 && Application.loadedLevelName ==("Tutorial"))
+			{
+				Time.timeScale = 0f;
+				if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+				{
+					gameMgr.health += 5;
+					gameMgr.gears += 30;
+					Application.LoadLevel("LevelOne");
+				}
+			}
 		}
 	
 		// Update is called once per frame
@@ -76,6 +95,11 @@ public class EnemySpawn : MonoBehaviour
 						wavePoints++;
 						maxTanks += TanksPerWave;
 						targetCountTank = 0;
+				}
+				if(wave > 6 && Application.loadedLevelName ==("Tutorial"))
+				{
+				directionalLight = GameObject.Find ("Directional light").GetComponent<Light>();
+//				directionalLight.
 				}
 		
 		}

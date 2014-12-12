@@ -1,9 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\New Import\Start_Menu_Beyond.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\EnemySpawn.cs">
     <Files>
-      <File FileName="Assets\New Import\Start_Menu_Beyond.cs" Line="135" Column="38" />
-      <File FileName="..\..\..\..\Documents\New Unity Project 2\Assets\Exporterarere\Menu\The_Main_Menu_OnGUI.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\EnemySpawn.cs" Line="92" Column="28" />
+      <File FileName="Assets\New Import\Start_Menu_Beyond.cs" Line="108" Column="4" />
+      <File FileName="Assets\scripts\GameManager.cs" Line="8" Column="13" />
+      <File FileName="Assets\scripts\UIText.cs" Line="1" Column="1" />
+      <File FileName="Assets\New Import\CameraControl.cs" Line="103" Column="37" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
