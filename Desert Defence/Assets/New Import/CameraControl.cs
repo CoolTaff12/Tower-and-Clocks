@@ -75,7 +75,7 @@ public class CameraControl : MonoBehaviour
 
 				Camera.main.orthographicSize = Mathf.Clamp (Camera.main.orthographicSize, orthographicSizeMin, orthographicSizeMax);
 		//Switching Minicameras
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.C))
 		{
 			located++;
 		}
