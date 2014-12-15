@@ -39,9 +39,9 @@ public class EnemySpawn : MonoBehaviour
 		public int TanksPerWave = 0;
 		public GameManager gameMgr;
 
-		//
+		//------------------------------------
 
-		public Object directionalLight;
+		public GameObject directionalLight;
 	
 		// Use this for initialization
 		void Start ()
@@ -55,7 +55,8 @@ public class EnemySpawn : MonoBehaviour
 
 		void OnGUI()
 		{
-			if (wave > 12 && Application.loadedLevelName ==("Tutorial"))
+			//GUI.Box (new Rect (Screen.width / 3f, Screen.height / 8f, 100, 200),"");
+			if (wave > 16 && Application.loadedLevelName ==("Tutorial"))
 			{
 				Time.timeScale = 0f;
 				if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
@@ -96,10 +97,21 @@ public class EnemySpawn : MonoBehaviour
 						maxTanks += TanksPerWave;
 						targetCountTank = 0;
 				}
-				if(wave > 6 && Application.loadedLevelName ==("Tutorial"))
+				if(wave > 10 && Application.loadedLevelName ==("Tutorial"))
 				{
-				directionalLight = GameObject.Find ("Directional light").GetComponent<Light>();
-//				directionalLight.
+					Quaternion rot = directionalLight.transform.rotation;
+					//rot.y =45.196753f;
+					rot.y = 124.39f;
+				//	Quaternion tot = 45.19673f);
+				//	transform.rotation = Quaternion.Lerp(rot.rotation,
+
+			//Y = 45.19673f
+			//Lerp
+			//Quaternion.lerp
+			//NUvarande
+
+				//directionalLight = GameObject.Find ("Directional light").GetComponent<Light>();
+
 				}
 		
 		}
