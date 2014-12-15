@@ -42,6 +42,13 @@ public class EnemySpawn : MonoBehaviour
 		//------------------------------------
 
 		public GameObject directionalLight;
+		public Texture2D gameMenu;
+		public Texture2D resume;
+		public Texture2D help;
+		public Texture2D menu;
+		public Texture2D options;
+		private bool pauseMode = false;
+
 	
 		// Use this for initialization
 		void Start ()
@@ -55,7 +62,16 @@ public class EnemySpawn : MonoBehaviour
 
 		void OnGUI()
 		{
-			//GUI.Box (new Rect (Screen.width / 3f, Screen.height / 8f, 100, 200),"");
+			if (GUI.Button (new Rect (300, 0, 200, 101), "Pause") && pauseMode == false) 
+			{
+				GUI.DrawTexture (new Rect (Screen.width / 3.5f, Screen.height / 10f, 356,512), gameMenu);
+				GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 4f, 156, 64), resume);
+				GUI.DrawTexture (new Rect (Screen.width / 2.45f, Screen.height / 2.6f, 156, 64), help);
+				GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 1.8f, 156, 64), options);
+				GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 1.4f, 156, 64), menu);
+				pauseMode = true;
+				//Time.timeScale = 0f;
+			}
 			if (wave > 16 && Application.loadedLevelName ==("Tutorial"))
 			{
 				Time.timeScale = 0f;
