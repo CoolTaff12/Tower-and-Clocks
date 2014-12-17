@@ -74,7 +74,8 @@ public class Enemy : MonoBehaviour
 				transform.position = Vector3.MoveTowards (transform.position, path.moveToWP [mtWP].position, step);
 				waypointPos = path.moveToWP [mtWP].position;
 				LookAt ();
-				if (health <= 0) {
+				if (health <= 0) 
+				{
 						gameMgr.gears += gearYield;
 						gameMgr.score += pointYield * enemySpawner.wavePoints;
 						Destroy (gameObject);
@@ -118,10 +119,10 @@ public class Enemy : MonoBehaviour
 						mtWP++;
 						WPcd = 0.5f;
 
-						if (mtWP >= path.moveToWP.Length) {//If the index of MoveToTarget exceeds the length of the array, do...
+						if (mtWP >= path.moveToWP.Length)
+						{		//If the index of MoveToTarget exceeds the length of the array, do...
 								gameMgr.health -= unitDamage;
 								Destroy (gameObject);
-
 						}
 			
 			

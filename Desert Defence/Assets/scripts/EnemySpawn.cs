@@ -47,8 +47,24 @@ public class EnemySpawn : MonoBehaviour
 		public Texture2D help;
 		public Texture2D menu;
 		public Texture2D options;
-		private bool pauseMode = false;
+		public Texture2D pause;
 
+		//-----------------------------------------------
+		private enum MenuStates { Runs, PausedMenu, Help1, Help2, Help3, Help4,};
+		private MenuStates currState;
+		public GUISkin trueMenu;
+		public Texture2D HTP1;
+		public Texture2D HTP2;
+		public Texture2D HTP3;
+		public Texture2D HTP4;
+		public Texture2D Next;
+		public Texture2D Back;
+
+		//------------------------------------------------
+		void Awake () 
+		{
+			currState = MenuStates.Runs;
+		}
 	
 		// Use this for initialization
 		void Start ()
@@ -62,15 +78,31 @@ public class EnemySpawn : MonoBehaviour
 
 		void OnGUI()
 		{
-			if (GUI.Button (new Rect (300, 0, 200, 101), "Pause") && pauseMode == false) 
+			if(GUI.skin != trueMenu) 
 			{
-				GUI.DrawTexture (new Rect (Screen.width / 3.5f, Screen.height / 10f, 356,512), gameMenu);
-				GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 4f, 156, 64), resume);
-				GUI.DrawTexture (new Rect (Screen.width / 2.45f, Screen.height / 2.6f, 156, 64), help);
-				GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 1.8f, 156, 64), options);
-				GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 1.4f, 156, 64), menu);
-				pauseMode = true;
-				//Time.timeScale = 0f;
+				GUI.skin = trueMenu;	
+			}
+			GUI.color = new Color32 (255, 255, 255, 200);
+			switch(currState) 
+			{
+				case MenuStates.Runs:
+				DrawRuns();
+				break;
+				case MenuStates.PausedMenu:
+				DrawPausedMenu();
+				break;
+				case MenuStates.Help1:
+					DrawHelp1();
+					break;
+				case MenuStates.Help2:
+					DrawHelp2();
+					break;
+				case MenuStates.Help3:
+					DrawHelp3();
+					break;
+				case MenuStates.Help4:
+					DrawHelp4();
+					break;
 			}
 			if (wave > 16 && Application.loadedLevelName ==("Tutorial"))
 			{
@@ -83,6 +115,107 @@ public class EnemySpawn : MonoBehaviour
 				}
 			}
 		}
+
+	//----------------------------------------------------------------------------
+		private void DrawRuns()
+		{
+			Time.timeScale = 1f;
+			if (GUI.Button (new Rect (300, 0, 200, 80), "")) 
+			{
+				currState = MenuStates.PausedMenu;
+			}
+			GUI.DrawTexture (new Rect (300, 0, 200, 80), pause);
+		}
+		private void DrawPausedMenu()
+		{
+			GUI.DrawTexture (new Rect (Screen.width / 3.5f, Screen.height / 10f, 356,512), gameMenu);
+			if (GUI.Button (new Rect (Screen.width / 2.5f, Screen.height / 4f, 156, 64),"")) 
+			{
+				currState = MenuStates.Runs;
+			}
+			GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 4f, 156, 64), resume);
+			if (GUI.Button (new Rect (Screen.width / 2.45f, Screen.height / 2.6f, 156, 64),"")) 
+			{
+				currState = MenuStates.Help1;
+			}
+			GUI.DrawTexture (new Rect (Screen.width / 2.45f, Screen.height / 2.6f, 156, 64), help);
+			GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 1.8f, 156, 64), options);
+			if (GUI.Button (new Rect (Screen.width / 2.5f, Screen.height / 1.4f, 156, 64),"")) 
+			{
+				Application.LoadLevel("NewMainMenu");
+			}
+			GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 1.4f, 156, 64), menu);
+			Time.timeScale = 0.001f;
+		}	
+
+		private void DrawHelp1()
+		{
+			GUI.DrawTexture (new Rect (Screen.width / 5f, Screen.height / 8f, 600, 280),HTP1);
+			if (GUI.Button (new Rect(Screen.width / 2.3f, Screen.height / 1.4f, 200, 80), ""))
+			{
+				currState = MenuStates.PausedMenu;
+			}
+			GUI.DrawTexture(new Rect(Screen.width / 2.3f, Screen.height / 1.4f, 200, 80), pause);
+		if (GUI.Button (new Rect(Screen.width / 1.4f, Screen.height / 1.6f, 200, 67), ""))
+			{
+				currState = MenuStates.Help2;
+			}
+			GUI.DrawTexture(new Rect(Screen.width / 1.4f, Screen.height / 1.6f, 200, 67), Next);
+		}
+		private void DrawHelp2()
+		{
+			GUI.DrawTexture (new Rect (Screen.width / 5f, Screen.height / 8f, 600, 280),HTP2);
+			if (GUI.Button (new Rect(Screen.width / 2.3f, Screen.height / 1.4f, 200, 80), ""))
+			{
+				currState = MenuStates.PausedMenu;
+			}
+			GUI.DrawTexture(new Rect(Screen.width / 2.3f, Screen.height / 1.4f, 200, 80), pause);
+			if (GUI.Button (new Rect(Screen.width / 1.4f, Screen.height / 1.6f, 200, 67), ""))
+			{
+				currState = MenuStates.Help3;
+			}
+			GUI.DrawTexture(new Rect(Screen.width / 1.4f, Screen.height / 1.6f, 200, 67), Next);
+			if (GUI.Button (new Rect(Screen.width / 7f, Screen.height / 1.6f, 200, 67), ""))
+			{
+				currState = MenuStates.Help1;
+			}
+			GUI.DrawTexture(new Rect(Screen.width / 7f, Screen.height / 1.6f, 200, 67), Back);
+		}
+		private void DrawHelp3()
+		{
+			GUI.DrawTexture (new Rect (Screen.width / 5f, Screen.height / 8f, 600, 280),HTP3);
+			if (GUI.Button (new Rect(Screen.width / 2.3f, Screen.height / 1.4f, 200, 80), ""))
+			{
+				currState = MenuStates.PausedMenu;
+			}
+			GUI.DrawTexture(new Rect(Screen.width / 2.3f, Screen.height / 1.4f, 200, 80), pause);
+			if (GUI.Button (new Rect(Screen.width / 1.4f, Screen.height / 1.6f, 200, 67), ""))
+			{
+				currState = MenuStates.Help4;
+			}
+			GUI.DrawTexture(new Rect(Screen.width / 1.4f, Screen.height / 1.6f, 200, 67), Next);
+			if (GUI.Button (new Rect(Screen.width / 7f, Screen.height / 1.6f, 200, 67), ""))
+			{
+				currState = MenuStates.Help2;
+			}
+			GUI.DrawTexture(new Rect(Screen.width / 7f, Screen.height / 1.6f, 200, 67), Back);
+		}
+		private void DrawHelp4()
+		{
+		GUI.DrawTexture (new Rect (Screen.width / 5f, Screen.height / 9.6f, 600, 308),HTP4);
+		if (GUI.Button (new Rect(Screen.width / 2.3f, Screen.height / 1.4f, 200, 80), ""))
+		{
+			currState = MenuStates.PausedMenu;
+		}
+		GUI.DrawTexture(new Rect(Screen.width / 2.3f, Screen.height / 1.4f, 200, 80), pause);
+		if (GUI.Button (new Rect(Screen.width / 7f, Screen.height / 1.6f, 200, 67), ""))
+		{
+			currState = MenuStates.Help3;
+		}
+		GUI.DrawTexture(new Rect(Screen.width / 7f, Screen.height / 1.6f, 200, 67), Back);
+		
+		}
+	//----------------------------------------------------------------------------
 	
 		// Update is called once per frame
 		void Update ()

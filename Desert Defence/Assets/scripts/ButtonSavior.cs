@@ -32,6 +32,11 @@ public class ButtonSavior : MonoBehaviour
 				Application.LoadLevel ("MainMenu");
 		}
 
+		public virtual void NewMainMenu ()
+		{
+			Application.LoadLevel ("NewMainMenu");
+		}
+
 		public virtual void LevelChoice ()
 		{
 				Application.LoadLevel ("LevelChoice");

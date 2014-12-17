@@ -25,7 +25,6 @@ public class Start_Menu_Beyond : MonoBehaviour
 
 	public GUISkin trueMenu;
 	public AudioClip[] audioClip;
-//	private bool musicselect = true;
 	public Texture2D m1;
 	public Texture2D m2;
 	
@@ -155,7 +154,6 @@ public class Start_Menu_Beyond : MonoBehaviour
 		GUI.Box (new Rect (140, 20, 1000, 110),"");
 		GUI.Label(new Rect(140, 20, 1000, 110),"\tBasic Rules"); 
 		GUI.DrawTexture (new Rect (Screen.width - 750, 130, 1200, 560),HTP1);
-	//	GUI.DrawTexture(new Rect(Screen.width + 200, Screen.height - 450, 222, 170), HTP1);
 		if (GUI.Button (new Rect(Screen.width - 360, Screen.height + 100, 412, 101), ""))
 		{
 			currState = MenuStates.Main;
