@@ -3,7 +3,8 @@ using System.Collections;
 
 public class ButtonSavior : MonoBehaviour
 {
-		public GameManager gameMgr;
+	public GameManager gameMgr;
+	public GameObject[] gameObjects;
 
 		// Use this for initialization
 		void Start ()
@@ -65,6 +66,21 @@ public class ButtonSavior : MonoBehaviour
 		public virtual void Credits ()
 		{
 				Application.LoadLevel ("Credits");
+		}
+
+		public virtual void Nuke()
+		{
+			Debug.Log("It's Show Time");
+			gameObjects = GameObject.FindGameObjectsWithTag ("Target");
+			for(int i = 0 ; i < gameObjects.Length ; i ++)
+			{
+				Destroy(gameObjects[i]);
+			}
+			/*if (gameObject.tag == "Target") 
+			{
+				Debug.Log("Boom");
+				Destroy (gameObject);
+			}*/
 		}
 
 		public virtual void LevelOne ()

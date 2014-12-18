@@ -35,7 +35,6 @@ public class GameOverText : MonoBehaviour
 		if(highscore > 9f)
 			{
 			text.text = "Y o u r  f i n a l  s c o r e : " + "\t" + gameMgr.score;
-			highscore = 0;
 			}
 		
 		}

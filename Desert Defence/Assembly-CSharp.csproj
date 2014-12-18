@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\New Import\New Scripts\CameraControl.cs" />
      <Compile Include="Assets\New Import\New Scripts\GUIX.cs" />
+     <Compile Include="Assets\New Import\New Scripts\Path2.cs" />
      <Compile Include="Assets\New Import\New Scripts\SceneFadeInOut.cs" />
      <Compile Include="Assets\New Import\New Scripts\Start_Menu_Beyond.cs" />
      <Compile Include="Assets\New Import\New Scripts\TypingTextFade.cs" />
