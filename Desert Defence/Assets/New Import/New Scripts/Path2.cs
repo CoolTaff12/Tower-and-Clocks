@@ -14,9 +14,4 @@ public class Path2 : MonoBehaviour
 			mtWP2++;
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

@@ -40,8 +40,7 @@ public class EnemySpawn : MonoBehaviour
 		public GameManager gameMgr;
 
 		//------------------------------------
-
-		public GameObject directionalLight;
+	
 		public Texture2D gameMenu;
 		public Texture2D resume;
 		public Texture2D help;
@@ -246,7 +245,7 @@ public class EnemySpawn : MonoBehaviour
 						maxTanks += TanksPerWave;
 						targetCountTank = 0;
 				}
-				if(wave > 10 && Application.loadedLevelName ==("Tutorial"))
+			/*	if(wave > 10 && Application.loadedLevelName ==("Tutorial"))
 				{
 					Quaternion rot = directionalLight.transform.rotation;
 					//rot.y =45.196753f;
@@ -261,7 +260,7 @@ public class EnemySpawn : MonoBehaviour
 
 				//directionalLight = GameObject.Find ("Directional light").GetComponent<Light>();
 
-				}
+				}*/
 		
 		}
 

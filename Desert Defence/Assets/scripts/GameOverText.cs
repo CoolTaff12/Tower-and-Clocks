@@ -20,7 +20,7 @@ public class GameOverText : MonoBehaviour
 		void Update ()
 		{
 		highscore += Time.deltaTime;
-		if(highscore > 7.5f)
+		if(highscore > 7.6f)
 		{
 			text.text = "Y o u r  ";
 		}
