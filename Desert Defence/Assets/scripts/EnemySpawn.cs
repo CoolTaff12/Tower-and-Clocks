@@ -72,7 +72,6 @@ public class EnemySpawn : MonoBehaviour
 				gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 				wave = 1f;
 				spawnTimer = 10;
-		
 		}
 
 		void OnGUI()
@@ -85,11 +84,11 @@ public class EnemySpawn : MonoBehaviour
 			switch(currState) 
 			{
 				case MenuStates.Runs:
-				DrawRuns();
-				break;
+					DrawRuns();
+					break;
 				case MenuStates.PausedMenu:
-				DrawPausedMenu();
-				break;
+					DrawPausedMenu();
+					break;
 				case MenuStates.Help1:
 					DrawHelp1();
 					break;
@@ -113,12 +112,27 @@ public class EnemySpawn : MonoBehaviour
 					Application.LoadLevel("LevelOne");
 				}
 			}
+			if (wave > 26 && Application.loadedLevelName ==("LevelSix"))
+			{
+				Time.timeScale = 0f;
+				if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+				{
+					gameMgr.health += 5;
+					gameMgr.gears += 30;
+					Application.LoadLevel("LevelOne");
+				}
+		}
 		}
 
 	//----------------------------------------------------------------------------
 		private void DrawRuns()
 		{
 			Time.timeScale = 1f;
+			if (Application.loadedLevelName == ("LevelSix")) 
+			{
+			Time.timeScale = 1.5f;
+			Debug.Log("Wow, it goes " + Time.timeScale + " as fast!");
+			}
 			if (GUI.Button (new Rect (300, 0, 200, 80), "")) 
 			{
 				currState = MenuStates.PausedMenu;

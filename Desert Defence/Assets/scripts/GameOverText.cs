@@ -11,6 +11,7 @@ public class GameOverText : MonoBehaviour
 		// Use this for initialization
 		void Awake ()
 		{
+				Time.timeScale = 1f;
 				gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 				text = GetComponent <Text> ();
 		

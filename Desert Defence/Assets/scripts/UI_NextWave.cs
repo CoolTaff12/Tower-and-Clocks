@@ -15,8 +15,14 @@ public class UI_NextWave : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		timeLeft = (int)Mathf.RoundToInt (spawnMgr.spawnTimer);
 		text.text = "Next Wave:\n" + timeLeft;
+		if (Application.loadedLevelName == ("LevelSix")) 
+		//The Time on Next Wave on a specific leve where everything speeds up
+		{
+			text.text = "Next Wave:\n" + timeLeft / 2;
+		}
 	}
 }

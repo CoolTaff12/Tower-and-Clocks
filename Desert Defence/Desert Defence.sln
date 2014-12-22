@@ -5,6 +5,8 @@ Project("{7A351A3D-5266-4617-99AA-A4A3386A0514}") = "Desert Defence", "Assembly-
 EndProject
 Project("{7A351A3D-5266-4617-99AA-A4A3386A0514}") = "Desert Defence", "Assembly-CSharp.csproj", "{EC15AA35-2E6C-D3FC-69C9-B8D7D3A7CE8A}"
 EndProject
+Project("{7A351A3D-5266-4617-99AA-A4A3386A0514}") = "Desert Defence", "Assembly-CSharp-Editor.csproj", "{1756416F-D2B1-F8E0-8C50-1EB285F61111}"
+EndProject
 Project("{7A351A3D-5266-4617-99AA-A4A3386A0514}") = "Desert Defence", "Assembly-UnityScript-firstpass.unityproj", "{9EF783B8-7048-FEEE-B8C5-B8048FA8B78B}"
 EndProject
 Global
@@ -21,6 +23,10 @@ Global
 		{EC15AA35-2E6C-D3FC-69C9-B8D7D3A7CE8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC15AA35-2E6C-D3FC-69C9-B8D7D3A7CE8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC15AA35-2E6C-D3FC-69C9-B8D7D3A7CE8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1756416F-D2B1-F8E0-8C50-1EB285F61111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1756416F-D2B1-F8E0-8C50-1EB285F61111}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1756416F-D2B1-F8E0-8C50-1EB285F61111}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1756416F-D2B1-F8E0-8C50-1EB285F61111}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9EF783B8-7048-FEEE-B8C5-B8048FA8B78B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9EF783B8-7048-FEEE-B8C5-B8048FA8B78B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EF783B8-7048-FEEE-B8C5-B8048FA8B78B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -29,7 +35,8 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																									GlobalSection(MonoDevelopProperties) = preSolution
+																																																							GlobalSection(MonoDevelopProperties) = preSolution
+																																															GlobalSection(MonoDevelopProperties) = preSolution
 																		GlobalSection(MonoDevelopProperties) = preSolution
 																			GlobalSection(MonoDevelopProperties) = preSolution
 											GlobalSection(MonoDevelopProperties) = preSolution

@@ -8,6 +8,7 @@ public class SceneFadeInOut : MonoBehaviour
 
 	void Awake()
 	{
+		Time.timeScale = 1f;
 		guiTexture.pixelInset = new Rect (0f, 0f, Screen.width, Screen.height);
 	}
 

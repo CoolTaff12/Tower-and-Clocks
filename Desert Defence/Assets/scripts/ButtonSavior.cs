@@ -17,6 +17,7 @@ public class ButtonSavior : MonoBehaviour
 		{
 				gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 				if (gameMgr.health <= 0) {
+						Time.timeScale = 1f;
 						gameMgr.health = gameMgr.startHealth;
 						EndGame ();
 	
