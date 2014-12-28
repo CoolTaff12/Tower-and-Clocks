@@ -49,7 +49,7 @@ public class EnemySpawn : MonoBehaviour
 		public Texture2D pause;
 
 		//-----------------------------------------------
-		private enum MenuStates { Runs, PausedMenu, Help1, Help2, Help3, Help4,};
+		private enum MenuStates { Runs, PausedMenu, Help1, Help2, Help3, Help4, Tutorial1, Tutorial2};
 		private MenuStates currState;
 		public GUISkin trueMenu;
 		public Texture2D HTP1;
@@ -63,6 +63,10 @@ public class EnemySpawn : MonoBehaviour
 		void Awake () 
 		{
 			currState = MenuStates.Runs;
+			if(Application.loadedLevelName ==("Tutorial"))
+			{
+				currState = MenuStates.PausedMenu;
+			}
 		}
 	
 		// Use this for initialization
@@ -83,6 +87,10 @@ public class EnemySpawn : MonoBehaviour
 			GUI.color = new Color32 (255, 255, 255, 200);
 			switch(currState) 
 			{
+				//For Tutorial Level Only--------------------
+				
+
+				//-------------------------------------------
 				case MenuStates.Runs:
 					DrawRuns();
 					break;
@@ -109,7 +117,7 @@ public class EnemySpawn : MonoBehaviour
 				{
 					gameMgr.health += 5;
 					gameMgr.gears += 30;
-					Application.LoadLevel("LevelOne");
+					Application.LoadLevel(Application.loadedLevel + 1);
 				}
 			}
 			if (wave > 26 && Application.loadedLevelName ==("LevelSix"))
@@ -119,7 +127,7 @@ public class EnemySpawn : MonoBehaviour
 				{
 					gameMgr.health += 5;
 					gameMgr.gears += 30;
-					Application.LoadLevel("LevelOne");
+					Application.LoadLevel(Application.loadedLevel + 1);
 				}
 		}
 		}

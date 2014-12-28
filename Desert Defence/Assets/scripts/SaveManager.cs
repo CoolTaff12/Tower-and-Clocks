@@ -29,7 +29,7 @@ public class SaveManager : MonoBehaviour
 		} 
 		else 
 		{
-			if (this != _instance) 
+			if (this != _instance) // || Application.loadedLevelName == ("Tutorial")) 
 			{
 				Destroy (this.gameObject);
 			}

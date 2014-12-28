@@ -34,10 +34,14 @@ public class Start_Menu_Beyond : MonoBehaviour
 	public Texture2D HTP2;
 	public Texture2D HTP3;
 	public Texture2D HTP4;
-	
+
 	//--------------------------------------
 
-	private enum MenuStates { Main, How_To_Play, How_To_Play2, How_To_Play3, How_To_Play4, Lvl, Options, Confirm_Quit};
+	public float fade;
+
+	//--------------------------------------
+
+	private enum MenuStates { Main, How_To_Play, How_To_Play2, How_To_Play3, How_To_Play4, Lvl, LvlSelect, Options, Confirm_Quit};
 	private MenuStates currState;	// The currect state which will allow us to switch GUI between parts.
 
 	//--------------------------------------
@@ -67,8 +71,11 @@ public class Start_Menu_Beyond : MonoBehaviour
 			GUI.skin = trueMenu;	
 		}
 		if(backgroundForMenu) 
-		{
-			GUI.DrawTexture(new Rect(0,0,GUIX.screenWidth, GUIX.screenHeight), backgroundForMenu);	
+		{	
+			if(fade >= 5.5f) //currState != MenuStates.Confirm_Quit && 
+			{
+				GUI.DrawTexture(new Rect(0,0,GUIX.screenWidth, GUIX.screenHeight), backgroundForMenu);	
+			}
 		}
 		GUI.color = new Color32 (255, 255, 255, 200);
 		switch(currState) 
@@ -91,6 +98,9 @@ public class Start_Menu_Beyond : MonoBehaviour
 		case  MenuStates.Lvl:
 			DrawConfirmLvl();
 			break;
+		case MenuStates.LvlSelect:
+			DrawLvlSelect();
+			break;
 		case  MenuStates.Options:
 			DrawOptions();
 			break;
@@ -101,30 +111,32 @@ public class Start_Menu_Beyond : MonoBehaviour
 	}
 	private void DrawMainScreen() 
 	{
-		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 400, 412, 101), ""))
+		if(fade > 5.5f)
 		{
-			currState = MenuStates.Lvl;
+			if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 400, 412, 101), ""))
+			{
+				currState = MenuStates.Lvl;
+			}
+			GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 400, 412, 101), startGame);
+			// Option Button
+			if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 280, 412, 101), ""))
+			{
+				currState = MenuStates.How_To_Play;
+			}
+			GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 280, 412, 101), HowToPlay);
+			// How to Play Button
+			if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 160, 412, 101), ""))
+			{
+				currState = MenuStates.Options;
+			}
+			GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 160, 412, 101), Options);
+			if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 40, 412, 101), ""))
+			{
+				currState = MenuStates.Confirm_Quit;
+			}
+			GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 40, 412, 101), quit);
 		}
-		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 400, 412, 101), startGame);
-		// Option Button
-		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 280, 412, 101), ""))
-		{
-			currState = MenuStates.How_To_Play;
-		}
-		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 280, 412, 101), HowToPlay);
-		// How to Play Button
-		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 160, 412, 101), ""))
-		{
-			currState = MenuStates.Options;
-		}
-		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 160, 412, 101), Options);
-		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 40, 412, 101), ""))
-		{
-			currState = MenuStates.Confirm_Quit;
-		}
-		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 40, 412, 101), quit);
 	}
-
 	//---------------------------------------------------------------
 
 	private void DrawConfirmLvl()
@@ -146,6 +158,12 @@ public class Start_Menu_Beyond : MonoBehaviour
 		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height, 412, 101), MainMenu);
 	}
 
+	//---------------------------------------------------------------
+
+	private void DrawLvlSelect()
+	{
+
+	}
 
 	//---------------------------------------------------------------
 
@@ -302,6 +320,6 @@ public class Start_Menu_Beyond : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-	
+		fade += Time.deltaTime;
 	}
 }
