@@ -4,59 +4,28 @@ using UnityEngine.UI;
 
 public class TypingTextFade : MonoBehaviour 
 {
-	Text text;
-
-	public float highscore = 1f;
-	void Awake ()
+	public float letterPause = 0.2f;
+	public AudioClip sound;
+	
+	string message;
+	
+	// Use this for initialization
+	void Start () 
 	{
-		text = GetComponent <Text> ();	
+		message = guiText.text;
+		guiText.text = "";
+		StartCoroutine(TypeText ());
 	}
-
-	// Update is called once per frame
-	void Update () 
+	
+	IEnumerator TypeText ()
 	{
-		highscore += Time.deltaTime;
-		if(highscore > 1.7)
+		foreach (char letter in message.ToCharArray()) 
 		{
-			text.text = "Y ";
-		}
-		if(highscore > 2f)
-		{
-			text.text = "Y o ";
-		}
-		if(highscore > 2.3f)
-		{
-			text.text = "Y o u ";
-		}
-		if(highscore > 2.5f)
-		{
-			text.text = "Y o u  ";
-		}
-		if(highscore > 2.8f)
-		{
-			text.text = "Y o u   F ";
-		}
-		if(highscore > 3.1f)
-		{
-			text.text = "Y o u   F a ";
-		}
-		if(highscore > 3.4f)
-		{
-			text.text = "Y o u   F a i ";
-		}		
-		if(highscore > 3.7f)
-		{
-			text.text = "Y o u   F a i l ";
-		}
-		if(highscore > 3.9f)
-		{
-			text.text = "Y o u   F a i l e ";
-		}
-		if(highscore > 4.1f)
-		{
-			text.text = "Y o u   F a i l e d ";
-		}
-
-
+			guiText.text += letter;
+			if (sound)
+				audio.PlayOneShot (sound);
+			yield return 0;
+			yield return new WaitForSeconds (letterPause);
+		}      
 	}
 }

@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\New Import\New Scripts\Animation_Menu.cs" />
      <Compile Include="Assets\New Import\New Scripts\BlinkingText.cs" />
      <Compile Include="Assets\New Import\New Scripts\CameraControl.cs" />
      <Compile Include="Assets\New Import\New Scripts\EnemySpawn2.cs" />

@@ -1,11 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\EnemySpawn.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\New Import\New Scripts\Animation_Menu.cs">
     <Files>
-      <File FileName="Assets\New Import\New Scripts\Start_Menu_Beyond.cs" Line="363" Column="29" />
-      <File FileName="Assets\New Import\New Scripts\Main_Menu_Music_Box.cs" Line="15" Column="3" />
-      <File FileName="Assets\scripts\EnemySpawn.cs" Line="167" Column="24" />
-      <File FileName="Assets\scripts\GameManager.cs" Line="12" Column="13" />
+      <File FileName="Assets\New Import\New Scripts\BlinkingText.cs" Line="40" Column="3" />
+      <File FileName="Assets\New Import\New Scripts\Animation_Menu.cs" Line="19" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
