@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class GameOverText : MonoBehaviour
 {
 		GameManager gameMgr;
+		public GameObject Button1;
+		public GameObject Button2;
 		Text text;
 		public float highscore = 1f;
 	
@@ -20,12 +22,13 @@ public class GameOverText : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
+
 		highscore += Time.deltaTime;
-		if(highscore > 7.6f)
+		if(highscore > 7.7f)
 		{
 			text.text = "Y o u r  ";
 		}
-		if(highscore > 7.8f)
+		if(highscore > 8f)
 		{
 			text.text = "Y o u r  f i n a l  ";
 		}
@@ -34,9 +37,19 @@ public class GameOverText : MonoBehaviour
 			text.text = "Y o u r  f i n a l  s c o r e : ";
 		}
 		if(highscore > 9f)
-			{
+		{
 			text.text = "Y o u r  f i n a l  s c o r e : " + "\t" + gameMgr.score;
-			}
+		}
+		if(highscore > 9f)
+		{
+			Button1.SetActive(true);
+			Button2.SetActive(true);
+		}
+		else
+		{
+			Button1.SetActive(false);
+			Button2.SetActive(false);
+		}
 		
 		}
 }

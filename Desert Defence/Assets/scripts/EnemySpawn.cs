@@ -163,6 +163,8 @@ public class EnemySpawn : MonoBehaviour
 			GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 1.8f, 156, 64), options);
 			if (GUI.Button (new Rect (Screen.width / 2.5f, Screen.height / 1.4f, 156, 64),"")) 
 			{
+				gameMgr.health = 10;
+				gameMgr.gears = 45;
 				Application.LoadLevel("NewMainMenu");
 			}
 			GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 1.4f, 156, 64), menu);

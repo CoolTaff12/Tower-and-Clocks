@@ -1,13 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="D:\2 School 4 Cool\SPDS SU\Stealth Mission\Assets\Sources\TheEnd\TheEnd.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\EnemySpawn.cs">
     <Files>
-      <File FileName="Assets\New Import\New Scripts\Start_Menu_Beyond.cs" Line="161" Column="1" />
-      <File FileName="Assets\scripts\FadeAway.cs" Line="35" Column="93" />
-      <File FileName="Assets\scripts\GameManager.cs" Line="11" Column="8" />
-      <File FileName="Assets\scripts\SaveManager.cs" Line="36" Column="4" />
-      <File FileName="Assets\scripts\EnemySpawn.cs" Line="67" Column="5" />
-      <File FileName="D:\2 School 4 Cool\SPDS SU\Stealth Mission\Assets\Sources\TheEnd\TheEnd.cs" Line="8" Column="2" />
+      <File FileName="Assets\New Import\New Scripts\Start_Menu_Beyond.cs" Line="363" Column="29" />
+      <File FileName="Assets\New Import\New Scripts\Main_Menu_Music_Box.cs" Line="15" Column="3" />
+      <File FileName="Assets\scripts\EnemySpawn.cs" Line="167" Column="24" />
+      <File FileName="Assets\scripts\GameManager.cs" Line="12" Column="13" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
