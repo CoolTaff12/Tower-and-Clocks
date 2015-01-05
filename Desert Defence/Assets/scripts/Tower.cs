@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Tower : MonoBehaviour
 {
-		public GameManager_1 gameMgr;
+		public GameManager gameMgr;
 		[HideInInspector]
 		public TowerSpawner
 				towerSpawner;
@@ -104,15 +104,20 @@ public class Tower : MonoBehaviour
 			{
 				transform.position = startPos + Vector3.up * Mathf.Sin (Time.time) * 0.2f;
 			}
-		/*	if (upgradeCost <= gameMgr.gears)
+			GameObject[] noUpgrade = GameObject.FindGameObjectsWithTag("Upgrades");
+		/*	if (upgradeCost < gameMgr.gears)
 			{
-				GameObject noUpgrade = GameObject.FindGameObjectWithTag("Upgrades");
-				noUpgrade.SetActive(true);
+				for(int i = 0 ; i < noUpgrade.Length ; i ++)
+				{
+					noUpgrade[i].SetActive(true);
+				}
 			}
-			if (upgradeCost >= gameMgr.gears)
+			if (upgradeCost > gameMgr.gears)
 			{
-				GameObject noUpgrade = GameObject.FindGameObjectWithTag("Upgrades");
-				noUpgrade.SetActive(false);
+				for(int i = 0 ; i < noUpgrade.Length ; i ++)
+				{
+					noUpgrade[i].SetActive(false);
+				}
 			}*/
 		}
 	
@@ -128,7 +133,7 @@ public class Tower : MonoBehaviour
 		
 		}
 
-		public void setMGR (GameManager_1 gameMGR)
+		public void setMGR (GameManager gameMGR)
 		{
 				gameMgr = gameMGR; 
 		}

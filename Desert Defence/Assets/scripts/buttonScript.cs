@@ -8,7 +8,7 @@ public class buttonScript : MonoBehaviour
 		public GameObject buttonGRP;
 		public CanvasGroup closer;
 		public CanvasGroup openMenu;
-		public GameManager_1 gameMgr;
+		public GameManager gameMgr;
 		public Tower tower;
 		public int nextLv = 0;
 		public GameObject[] mortarPrefabs;

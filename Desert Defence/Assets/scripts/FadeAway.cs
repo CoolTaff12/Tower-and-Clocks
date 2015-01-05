@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FadeAway : MonoBehaviour
 {
-		GameManager_1 gameMgr;
+		GameManager gameMgr;
 		public float fadeSpeed = 1.5f;          // Speed that the screen fades to and from black.
 	
 	
@@ -13,7 +13,7 @@ public class FadeAway : MonoBehaviour
 		void Awake ()
 		{
 
-				gameMgr = GameObject.Find ("GameManager_1").GetComponent<GameManager_1> ();
+				gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 				guiTexture.pixelInset = new Rect (0f, 0f, Screen.width, Screen.height);
 				sceneStarting = gameMgr.firstScene;
 		}

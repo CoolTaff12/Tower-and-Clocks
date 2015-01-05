@@ -3,7 +3,8 @@ using System.Collections;
 
 public class ButtonSavior : MonoBehaviour
 {
-		public GameManager_1 gameMgr;
+	public GameManager gameMgr;
+	public GameObject[] gameObjects;
 
 		// Use this for initialization
 		void Start ()
@@ -14,22 +15,41 @@ public class ButtonSavior : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-				gameMgr = GameObject.Find ("GameManager_1").GetComponent<GameManager_1> ();
-				if (gameMgr.health <= 0) {
-						gameMgr.health = gameMgr.startHealth;
-						EndGame ();
-	
-				}
+				gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+			if (gameMgr.health <= 0)
+			{
+				Time.timeScale = 1f;
+				gameMgr.health = gameMgr.startHealth;
+				ChangeLevel();
+				EndGame();
+			}
+		}
+
+		IEnumerator ChangeLevel()
+		{
+			Debug.Log ("Flash!");
+			float fadeTime = GameObject.Find ("GameManager").GetComponent<FadingLevels> ().BeginFade (1);
+			yield return new WaitForSeconds (fadeTime);
 		}
 
 		public virtual void EndGame ()
 		{
+				ChangeLevel();
+				GameObject CrashMusic = GameObject.FindGameObjectWithTag("Music");
+				GameObject DestroyParty = GameObject.Find("Music Box 2");
+				Destroy(CrashMusic);
+				Destroy(DestroyParty);
 				Application.LoadLevel ("GameOverScreen");
 		}
 
 		public virtual void MainMenu ()
 		{
 				Application.LoadLevel ("MainMenu");
+		}
+
+		public virtual void NewMainMenu ()
+		{
+			Application.LoadLevel ("NewMainMenu");
 		}
 
 		public virtual void LevelChoice ()
@@ -60,6 +80,21 @@ public class ButtonSavior : MonoBehaviour
 		public virtual void Credits ()
 		{
 				Application.LoadLevel ("Credits");
+		}
+
+		public virtual void Nuke()
+		{
+			Debug.Log("It's Show Time");
+			gameObjects = GameObject.FindGameObjectsWithTag ("Target");
+			for(int i = 0 ; i < gameObjects.Length ; i ++)
+			{
+				Destroy(gameObjects[i]);
+			}
+			/*if (gameObject.tag == "Target") 
+			{
+				Debug.Log("Boom");
+				Destroy (gameObject);
+			}*/
 		}
 
 		public virtual void LevelOne ()

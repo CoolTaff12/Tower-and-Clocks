@@ -37,36 +37,381 @@ public class EnemySpawn : MonoBehaviour
 		public int NormalsPerWave = 0;
 		public int SpeediesPerWave = 0;
 		public int TanksPerWave = 0;
-		public GameManager_1 gameMgr;
+		public GameManager gameMgr;
 
 		//------------------------------------
+	
+		public Texture2D gameMenu;
+		public Texture2D resume;
+		public Texture2D help;
+		public Texture2D menu;
+		public Texture2D options;
+		public Texture2D pause;
 
-		public GameObject directionalLight;
+		//-----------------------------------------------
+		private enum MenuStates { Runs, PausedMenu, Help1, Help2, Help3, Help4, Options, Tutorial1, Tutorial2};
+		private MenuStates currState;
+		public GUISkin trueMenu;
+		public Texture2D HTP1;
+		public Texture2D HTP2;
+		public Texture2D HTP3;
+		public Texture2D HTP4;
+		public Texture2D Next;
+		public Texture2D Back;
+		public Texture2D m1;
+		public Texture2D m2;
+		public Texture2D m3;
+		public Texture2D m4;
+
+		//----------------------------------------------
+
+		public GameObject[] noEdit;
+		public GameObject[] EnemyTarget;
+
+		//------------------------------------------------
+		void Awake () 
+		{
+			currState = MenuStates.Runs;
+			if(Application.loadedLevelName ==("Tutorial"))
+			{
+				currState = MenuStates.PausedMenu;
+			}
+		}
 	
 		// Use this for initialization
 		void Start ()
 		{
-				Time.timeScale = 1f;
-				gameMgr = GameObject.Find ("GameManager_1").GetComponent<GameManager_1> ();
-				wave = 1f;
-				spawnTimer = 10;
-		
+			noEdit[0].SetActive(true);
+			noEdit[1].SetActive(true);
+			Time.timeScale = 1f;
+			gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+			wave = 1f;
+			spawnTimer = 10;
+			EnemyTarget = GameObject.FindGameObjectsWithTag ("Target");
 		}
 
 		void OnGUI()
 		{
-			//GUI.Box (new Rect (Screen.width / 3f, Screen.height / 8f, 100, 200),"");
-			if (wave > 16 && Application.loadedLevelName ==("Tutorial"))
+			if(GUI.skin != trueMenu) 
 			{
-				Time.timeScale = 0f;
-				if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
-				{
-					gameMgr.health += 5;
-					gameMgr.gears += 30;
-					Application.LoadLevel("LevelOne");
-				}
+				GUI.skin = trueMenu;	
+			}
+			GUI.color = new Color32 (255, 255, 255, 200);
+			switch(currState) 
+			{
+				//For Tutorial Level Only--------------------
+				
+
+				//-------------------------------------------
+				case MenuStates.Runs:
+					DrawRuns();
+					break;
+				case MenuStates.PausedMenu:
+					DrawPausedMenu();
+					break;
+				case MenuStates.Help1:
+					DrawHelp1();
+					break;
+				case MenuStates.Help2:
+					DrawHelp2();
+					break;
+				case MenuStates.Help3:
+					DrawHelp3();
+					break;
+				case MenuStates.Help4:
+					DrawHelp4();
+					break;
+				case  MenuStates.Options:
+					DrawOptions();
+					break;
+			}
+		if (wave > 14 
+		   	&& EnemyTarget.Length == 0
+		   	&& Application.loadedLevelName ==("Tutorial"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+			{
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel(Application.loadedLevel + 1);
 			}
 		}
+		if (wave > 16 
+		    && EnemyTarget.Length == 0
+		    && Application.loadedLevelName ==("LevelOne"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+			{
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel(Application.loadedLevel + 1);
+			}
+		}
+
+		if (wave > 18 
+		    && EnemyTarget.Length == 0
+		    && Application.loadedLevelName ==("LevelTwo"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+			{
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel(Application.loadedLevel + 1);
+			}
+		}
+
+		if (wave > 22 
+		    && EnemyTarget.Length == 0
+		    && Application.loadedLevelName ==("LevelFour"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+			{
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel(Application.loadedLevel + 1);
+			}
+		}
+
+		if (wave > 24 
+		    && EnemyTarget.Length == 0
+		    && Application.loadedLevelName ==("Herman_27"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+			{
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel(Application.loadedLevel + 1);
+			}
+		}
+
+		if (wave > 28 
+	   		&& EnemyTarget.Length == 0
+	   	 	&& Application.loadedLevelName ==("LevelSix"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+			{
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel(Application.loadedLevel + 1);
+			}
+		}
+
+		if (wave > 32 
+		    && EnemyTarget.Length == 0
+		    && Application.loadedLevelName ==("LevelSeven"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+			{
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel(Application.loadedLevel + 1);
+			}
+		}
+
+		if (wave > 36 
+		    && EnemyTarget.Length == 0
+		    && Application.loadedLevelName ==("LevelCave"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+			{
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel(Application.loadedLevel + 1);
+			}
+		}
+		if (wave > 40 
+		    && EnemyTarget.Length == 0
+		    && Application.loadedLevelName ==("LevelJungle"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+			{
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel("Credits");
+			}
+		}
+	}
+
+	//----------------------------------------------------------------------------
+		private void DrawRuns()
+		{
+			Time.timeScale = 1f;
+			if (Application.loadedLevelName == ("LevelSix")) 
+			{
+			Time.timeScale = 1.5f;
+			Debug.Log("Wow, it goes " + Time.timeScale + " as fast!");
+			}
+			if (GUI.Button (new Rect (300, 0, 200, 80), "")) 
+			{
+				noEdit[0].SetActive(false);
+				noEdit[1].SetActive(false);
+				currState = MenuStates.PausedMenu;
+			}
+			GUI.DrawTexture (new Rect (300, 0, 200, 80), pause);
+		}
+		private void DrawPausedMenu()
+		{
+			GUI.DrawTexture (new Rect (Screen.width / 3.5f, Screen.height / 10f, 356,512), gameMenu);
+			if (GUI.Button (new Rect (Screen.width / 2.5f, Screen.height / 4f, 156, 64),"")) 
+			{
+				noEdit[0].SetActive(true);
+				noEdit[1].SetActive(true);
+				currState = MenuStates.Runs;
+			}
+			GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 4f, 156, 64), resume);
+			if (GUI.Button (new Rect (Screen.width / 2.5f, Screen.height / 2.6f, 156, 64),"")) 
+			{
+				currState = MenuStates.Help1;
+			}
+			GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 2.6f, 156, 64), help);
+		if (GUI.Button (new Rect (Screen.width / 2.5f, Screen.height / 1.8f, 156, 64),"")) 
+		{
+			currState = MenuStates.Options;
+		}
+			GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 1.8f, 156, 64), options);
+			if (GUI.Button (new Rect (Screen.width / 2.5f, Screen.height / 1.4f, 156, 64),"")) 
+			{
+				gameMgr.health = 10;
+				gameMgr.gears = 45;
+				GameObject CrashMusic = GameObject.FindGameObjectWithTag("Music");
+				GameObject DestroyParty = GameObject.Find("Music Box 2");
+				GameObject ObliterateFun = GameObject.Find("Music Box 3");
+				GameObject TerimatetheJoy = GameObject.Find("Music Box 4");
+				GameObject SteamRollHappines = GameObject.Find("Music Box 5");
+				Destroy(CrashMusic);
+				Destroy(DestroyParty);
+				Destroy(ObliterateFun);
+				Destroy(TerimatetheJoy);
+				Destroy(SteamRollHappines);
+				Application.LoadLevel("NewMainMenu");
+			}
+			GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 1.4f, 156, 64), menu);
+			Time.timeScale = 0.001f;
+		}	
+
+		private void DrawHelp1()
+		{
+			GUI.DrawTexture (new Rect (Screen.width / 5f, Screen.height / 8f, 600, 280),HTP1);
+			if (GUI.Button (new Rect(Screen.width / 2.3f, Screen.height / 1.4f, 200, 80), ""))
+			{
+				currState = MenuStates.PausedMenu;
+			}
+			GUI.DrawTexture(new Rect(Screen.width / 2.3f, Screen.height / 1.4f, 200, 80), pause);
+		if (GUI.Button (new Rect(Screen.width / 1.4f, Screen.height / 1.6f, 200, 67), ""))
+			{
+				currState = MenuStates.Help2;
+			}
+			GUI.DrawTexture(new Rect(Screen.width / 1.4f, Screen.height / 1.6f, 200, 67), Next);
+		}
+		private void DrawHelp2()
+		{
+			GUI.DrawTexture (new Rect (Screen.width / 5f, Screen.height / 8f, 600, 280),HTP2);
+			if (GUI.Button (new Rect(Screen.width / 2.3f, Screen.height / 1.4f, 200, 80), ""))
+			{
+				currState = MenuStates.PausedMenu;
+			}
+			GUI.DrawTexture(new Rect(Screen.width / 2.3f, Screen.height / 1.4f, 200, 80), pause);
+			if (GUI.Button (new Rect(Screen.width / 1.4f, Screen.height / 1.6f, 200, 67), ""))
+			{
+				currState = MenuStates.Help3;
+			}
+			GUI.DrawTexture(new Rect(Screen.width / 1.4f, Screen.height / 1.6f, 200, 67), Next);
+			if (GUI.Button (new Rect(Screen.width / 7f, Screen.height / 1.6f, 200, 67), ""))
+			{
+				currState = MenuStates.Help1;
+			}
+			GUI.DrawTexture(new Rect(Screen.width / 7f, Screen.height / 1.6f, 200, 67), Back);
+		}
+		private void DrawHelp3()
+		{
+			GUI.DrawTexture (new Rect (Screen.width / 5f, Screen.height / 8f, 600, 280),HTP3);
+			if (GUI.Button (new Rect(Screen.width / 2.3f, Screen.height / 1.4f, 200, 80), ""))
+			{
+				currState = MenuStates.PausedMenu;
+			}
+			GUI.DrawTexture(new Rect(Screen.width / 2.3f, Screen.height / 1.4f, 200, 80), pause);
+			if (GUI.Button (new Rect(Screen.width / 1.4f, Screen.height / 1.6f, 200, 67), ""))
+			{
+				currState = MenuStates.Help4;
+			}
+			GUI.DrawTexture(new Rect(Screen.width / 1.4f, Screen.height / 1.6f, 200, 67), Next);
+			if (GUI.Button (new Rect(Screen.width / 7f, Screen.height / 1.6f, 200, 67), ""))
+			{
+				currState = MenuStates.Help2;
+			}
+			GUI.DrawTexture(new Rect(Screen.width / 7f, Screen.height / 1.6f, 200, 67), Back);
+		}
+		private void DrawHelp4()
+		{
+		GUI.DrawTexture (new Rect (Screen.width / 5f, Screen.height / 9.6f, 600, 308),HTP4);
+		if (GUI.Button (new Rect(Screen.width / 2.3f, Screen.height / 1.4f, 200, 80), ""))
+		{
+			currState = MenuStates.PausedMenu;
+		}
+		GUI.DrawTexture(new Rect(Screen.width / 2.3f, Screen.height / 1.4f, 200, 80), pause);
+		if (GUI.Button (new Rect(Screen.width / 7f, Screen.height / 1.6f, 200, 67), ""))
+		{
+			currState = MenuStates.Help3;
+		}
+		GUI.DrawTexture(new Rect(Screen.width / 7f, Screen.height / 1.6f, 200, 67), Back);
+		
+		}
+
+
+	//---------------------------------------------------------------
+	
+	private void DrawOptions()
+	{	
+		GUILayout.BeginArea(new Rect(-250, 100, 1280, 800));
+		GUILayout.BeginHorizontal();
+		GUILayout.FlexibleSpace();
+		GUILayout.Label("Select Music");
+		GUILayout.FlexibleSpace();
+		GUILayout.EndHorizontal();
+		GUILayout.EndArea();
+		int changeSong = Main_Menu_Music_Box.music;
+		
+		if (GUI.Button (new Rect (Screen.width - 660, Screen.height - 320, Screen.width/3, Screen.height/9), ""))
+		{
+			changeSong = 1;
+			Main_Menu_Music_Box.music = changeSong;
+		}
+		GUI.DrawTexture(new Rect(Screen.width - 660, Screen.height - 320, Screen.width/3, Screen.height/9), m1);
+		if (GUI.Button (new Rect (Screen.width - 330, Screen.height - 320, Screen.width/3, Screen.height/9), ""))
+		{
+			changeSong = 2;
+			Main_Menu_Music_Box.music = changeSong;
+		}
+		GUI.DrawTexture(new Rect(Screen.width - 330, Screen.height - 320, Screen.width/3, Screen.height/9), m2);
+		if (GUI.Button (new Rect (Screen.width - 660, Screen.height - 210, Screen.width/3, Screen.height/9), ""))
+		{
+			changeSong = 3;
+			Main_Menu_Music_Box.music = changeSong;
+		}
+		GUI.DrawTexture(new Rect(Screen.width - 660, Screen.height - 210, Screen.width/3, Screen.height/9), m3);
+		if (GUI.Button (new Rect (Screen.width - 330, Screen.height - 210, Screen.width/3, Screen.height/9), ""))
+		{
+			changeSong = 4;
+			Main_Menu_Music_Box.music = changeSong;
+		}
+		GUI.DrawTexture(new Rect(Screen.width - 330, Screen.height - 210, Screen.width/3, Screen.height/9), m4);
+		if (GUI.Button (new Rect(Screen.width / 2.6f, Screen.height / 1.2f, 200, 80), ""))
+		{
+			currState = MenuStates.PausedMenu;
+		}
+		GUI.DrawTexture(new Rect(Screen.width / 2.6f, Screen.height / 1.2f, 200, 80), pause);
+
+	}
+	//----------------------------------------------------------------------------
 	
 		// Update is called once per frame
 		void Update ()
@@ -97,7 +442,7 @@ public class EnemySpawn : MonoBehaviour
 						maxTanks += TanksPerWave;
 						targetCountTank = 0;
 				}
-				if(wave > 10 && Application.loadedLevelName ==("Tutorial"))
+			/*	if(wave > 10 && Application.loadedLevelName ==("Tutorial"))
 				{
 					Quaternion rot = directionalLight.transform.rotation;
 					//rot.y =45.196753f;
@@ -112,7 +457,7 @@ public class EnemySpawn : MonoBehaviour
 
 				//directionalLight = GameObject.Find ("Directional light").GetComponent<Light>();
 
-				}
+				}*/
 		
 		}
 

@@ -4,13 +4,13 @@ using UnityEngine.UI;
 
 public class UIText : MonoBehaviour
 {
-		GameManager_1 gameMgr;
+		GameManager gameMgr;
 		Text text;
 
 		// Use this for initialization
 		void Awake ()
 		{
-				gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager_1> ();
+				gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 				text = GetComponent <Text> ();
 	
 		}

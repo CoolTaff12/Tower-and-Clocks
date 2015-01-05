@@ -20,7 +20,7 @@ public class TowerSpawner : MonoBehaviour
 		[SerializeField]
 		private SpawnManager
 				spawnMgr;
-		public GameManager_1 gameMgr;
+		public GameManager gameMgr;
 		[SerializeField]
 		private int
 				towerCostNormal = 0;
@@ -37,8 +37,8 @@ public class TowerSpawner : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				gameMgr = GameObject.Find ("GameManager_1").GetComponent<GameManager_1> ();
-				transform.renderer.material.color = new Color (0.2F, 0.3F, 0.4F, 0F);
+				gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+				transform.renderer.material.color = new Color (0.2F, 0.3F, 0.4F, 0.2F);
 		}
 	
 		// Update is called once per frame
@@ -113,7 +113,7 @@ public class TowerSpawner : MonoBehaviour
 
 		void OnMouseExit ()
 		{
-				transform.renderer.material.color = new Color (0.2F, 0.3F, 0.4F, 0F);
+				transform.renderer.material.color = new Color (0.2F, 0.3F, 0.4F, 0.2F);
 
 
 		}

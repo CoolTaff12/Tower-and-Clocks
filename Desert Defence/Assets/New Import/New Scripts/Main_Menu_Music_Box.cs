@@ -70,7 +70,7 @@ public class Main_Menu_Music_Box : MonoBehaviour
 
 		if(M1)
 		{
-			if (level == 9 || level == 10 || level == 3)									// CPU Mode with Mouse
+			if (level == 10 || level == 11 || level == 12 || level == 3)									// CPU Mode with Mouse
 			{
 				Destroy (gameObject);												// Destroys the object when the specific level is loaded
 			}
@@ -79,7 +79,34 @@ public class Main_Menu_Music_Box : MonoBehaviour
 		}
 		if(M2)
 		{
-			if (level == 9 || level == 10 || level == 3)									// CPU Mode with Mouse
+			if (level == 10 || level == 11 || level == 12 || level == 3)									// CPU Mode with Mouse
+			{
+				Destroy (gameObject);												// Destroys the object when the specific level is loaded
+			}
+			else
+				DontDestroyOnLoad (transform.gameObject);	
+		}
+		if(M3)
+		{
+			if (level == 11 || level == 12 || level == 3)									// CPU Mode with Mouse
+			{
+				Destroy (gameObject);												// Destroys the object when the specific level is loaded
+			}
+			else
+				DontDestroyOnLoad (transform.gameObject);	
+		}
+		if(M4)
+		{
+			if (level == 12 || level == 3)									// CPU Mode with Mouse
+			{
+				Destroy (gameObject);												// Destroys the object when the specific level is loaded
+			}
+			else
+				DontDestroyOnLoad (transform.gameObject);	
+		}
+		if(M4)
+		{
+			if (level == 3)									// CPU Mode with Mouse
 			{
 				Destroy (gameObject);												// Destroys the object when the specific level is loaded
 			}
