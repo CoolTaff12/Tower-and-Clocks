@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ButtonSavior : MonoBehaviour
 {
-		public GameManager gameMgr;
+		public GameManager_1 gameMgr;
 
 		// Use this for initialization
 		void Start ()
@@ -14,7 +14,7 @@ public class ButtonSavior : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-				gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+				gameMgr = GameObject.Find ("GameManager_1").GetComponent<GameManager_1> ();
 				if (gameMgr.health <= 0) {
 						gameMgr.health = gameMgr.startHealth;
 						EndGame ();

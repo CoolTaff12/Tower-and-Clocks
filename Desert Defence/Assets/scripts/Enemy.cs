@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿ using UnityEngine;
 using System.Collections;
 
 public class Enemy : MonoBehaviour
@@ -9,8 +9,7 @@ public class Enemy : MonoBehaviour
 		private float WPcd = 0.5f;
 		public float baseSpeed = 2f;
 		[HideInInspector]
-		public float
-				speed;
+		public float speed;
 		private int mtWP = 0;
 		[HideInInspector]
 		public float
@@ -52,13 +51,13 @@ public class Enemy : MonoBehaviour
 		private EnemySpawn enemySpawner;
 		Path path;
 		[HideInInspector]
-		public GameManager
+		public GameManager_1
 				gameMgr;
 		private Color baseColor;
 
 		void Start ()
 		{
-				gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+				gameMgr = GameObject.Find ("GameManager_1").GetComponent<GameManager_1> ();
 				path = GameObject.Find ("Path").GetComponent<Path> ();
 				health = baseHealth * (enemySpawner.wave / 3) * healthMultiplier;
 				speed = baseSpeed;
@@ -73,13 +72,8 @@ public class Enemy : MonoBehaviour
 				WPcd -= Time.deltaTime;
 				transform.position = Vector3.MoveTowards (transform.position, path.moveToWP [mtWP].position, step);
 				waypointPos = path.moveToWP [mtWP].position;
-				LookAt ();
-				if (health <= 0) {
-						gameMgr.gears += gearYield;
-						gameMgr.score += pointYield * enemySpawner.wavePoints;
-						Destroy (gameObject);
 			
-				}
+
 				if (slowed == true) {
 						slowTimer -= Time.deltaTime;
 						transform.renderer.material.color = new Color (0F, 244F, 255F, 0.5F);
@@ -104,29 +98,35 @@ public class Enemy : MonoBehaviour
 
 		public virtual void LookAt () //Rotates towards the target waypoint
 		{
-				if (path.moveToWP != null) {
+				if (path.moveToWP != null) 
+				{
 						targetPoint = new Vector3 (path.moveToWP [mtWP].position.x, transform.position.y, path.moveToWP [mtWP].position.z) - transform.position;
 						targetRotation = Quaternion.LookRotation (-targetPoint, Vector3.up);
 						transform.rotation = Quaternion.Slerp (transform.rotation, targetRotation, Time.deltaTime * 4.0f);
 				}
+
 		}
 
 		void OnTriggerEnter (Collider collision) //What happens when the enemy  collides with....
 		{//Upon collision, do...
-				if (collision.gameObject.tag == "Waypoint" && WPcd <= 0) { //...the target Waypoint.
+				if (collision.gameObject.tag == "Waypoint" && WPcd <= 0) 
+						{ //...the target Waypoint.
 
 						mtWP++;
 						WPcd = 0.5f;
 
-						if (mtWP >= path.moveToWP.Length) {//If the index of MoveToTarget exceeds the length of the array, do...
+						if (mtWP >= path.moveToWP.Length) 
+						{//If the index of MoveToTarget exceeds the length of the array, do...
 								gameMgr.health -= unitDamage;
 								Destroy (gameObject);
 
 						}
+				
 			
 			
-				} 
+						} 
 		}
+		
 
 		public void StartDoT ()
 		{ //Start Damage over Time.

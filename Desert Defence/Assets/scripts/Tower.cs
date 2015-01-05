@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Tower : MonoBehaviour
 {
-		public GameManager gameMgr;
+		public GameManager_1 gameMgr;
 		[HideInInspector]
 		public TowerSpawner
 				towerSpawner;
@@ -118,7 +118,7 @@ public class Tower : MonoBehaviour
 		
 		}
 
-		public void setMGR (GameManager gameMGR)
+		public void setMGR (GameManager_1 gameMGR)
 		{
 				gameMgr = gameMGR; 
 		}

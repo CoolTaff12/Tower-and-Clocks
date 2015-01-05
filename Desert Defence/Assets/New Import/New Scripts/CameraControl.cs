@@ -50,13 +50,13 @@ public class CameraControl : MonoBehaviour
 						; 
 				}
 		
-				//Scrolling Zoom
-				if (Input.GetAxis ("Mouse ScrollWheel") < -0) { // forward
-						Camera.main.orthographicSize *= 1.1f;
-				}
-				if (Input.GetAxis ("Mouse ScrollWheel") > -0) { // back
-						Camera.main.orthographicSize *= 0.9f;
-				}
+//				//Scrolling Zoom
+//				if (Input.GetAxis ("Mouse ScrollWheel") < -0) { // forward
+//						Camera.main.orthographicSize *= 1.1f;
+//				}
+//				if (Input.GetAxis ("Mouse ScrollWheel") > -0) { // back
+//						Camera.main.orthographicSize *= 0.9f;
+//				}
 
 				//Change the main cameras angle.
 				if (Input.GetKey(KeyCode.DownArrow) && transform.rotation.x < 52.21781)
@@ -74,36 +74,36 @@ public class CameraControl : MonoBehaviour
 				}
 
 				Camera.main.orthographicSize = Mathf.Clamp (Camera.main.orthographicSize, orthographicSizeMin, orthographicSizeMax);
-		//Switching Minicameras
-		if (Input.GetKeyDown(KeyCode.C))
-		{
-			located++;
-		}
-		if (located == 3)							
-		{
-			located = 0;	
-		}
-		
-		if (located == 0)
-		{
-			miniCamera1.camera.active = false;	
-			miniCamera2.camera.active = true;	
-			miniCamera3.camera.active = false;	
-			Debug.Log("Tara 1");
-		}
-		if (located == 1)
-		{
-			miniCamera1.camera.active = false;
-			miniCamera2.camera.active = false;	
-			miniCamera3.camera.active = true;
-			Debug.Log("Tara 2");
-		}
-		if (located == 2)
-		{
-			miniCamera1.camera.active = true;
-			miniCamera2.camera.active = false;	
-			miniCamera3.camera.active = false;	
-			Debug.Log("Tara 3");
-		}
+//		//Switching Minicameras
+//		if (Input.GetKeyDown(KeyCode.C))
+//		{
+//			located++;
+//		}
+//		if (located == 3)							
+//		{
+//			located = 0;	
+//		}
+//		
+//		if (located == 0)
+//		{
+//			miniCamera1.camera.active = false;	
+//			miniCamera2.camera.active = true;	
+//			miniCamera3.camera.active = false;	
+//			Debug.Log("Tara 1");
+//		}
+//		if (located == 1)
+//		{
+//			miniCamera1.camera.active = false;
+//			miniCamera2.camera.active = false;	
+//			miniCamera3.camera.active = true;
+//			Debug.Log("Tara 2");
+//		}
+//		if (located == 2)
+//		{
+//			miniCamera1.camera.active = true;
+//			miniCamera2.camera.active = false;	
+//			miniCamera3.camera.active = false;	
+//			Debug.Log("Tara 3");
+//		}
 	}
 }

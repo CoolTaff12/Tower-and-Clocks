@@ -37,7 +37,7 @@ public class EnemySpawn : MonoBehaviour
 		public int NormalsPerWave = 0;
 		public int SpeediesPerWave = 0;
 		public int TanksPerWave = 0;
-		public GameManager gameMgr;
+		public GameManager_1 gameMgr;
 
 		//------------------------------------
 
@@ -47,7 +47,7 @@ public class EnemySpawn : MonoBehaviour
 		void Start ()
 		{
 				Time.timeScale = 1f;
-				gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+				gameMgr = GameObject.Find ("GameManager_1").GetComponent<GameManager_1> ();
 				wave = 1f;
 				spawnTimer = 10;
 		
