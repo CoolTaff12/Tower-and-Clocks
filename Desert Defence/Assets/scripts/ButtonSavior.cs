@@ -35,6 +35,10 @@ public class ButtonSavior : MonoBehaviour
 		public virtual void EndGame ()
 		{
 				ChangeLevel();
+				GameObject CrashMusic = GameObject.FindGameObjectWithTag("Music");
+				GameObject DestroyParty = GameObject.Find("Music Box 2");
+				Destroy(CrashMusic);
+				Destroy(DestroyParty);
 				Application.LoadLevel ("GameOverScreen");
 		}
 

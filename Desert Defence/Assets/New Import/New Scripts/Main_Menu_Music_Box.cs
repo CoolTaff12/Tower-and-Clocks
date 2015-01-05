@@ -61,12 +61,28 @@ public class Main_Menu_Music_Box : MonoBehaviour
 	}
 	
 	void OnLevelWasLoaded(int level)
-	{
-		if (level == 8 || level == 9 || level == 10)		// CPU Mode with Mouse
+	{	
+		GameObject M1 = GameObject.Find ("Music Box");
+		GameObject M2 = GameObject.Find ("Music Box 2");
+		GameObject M4 = GameObject.Find ("Music Box 4");
+
+		if(M1)
 		{
-			Destroy (gameObject);												// Destroys the object when the specific level is loaded
+			if (level == 9 || level == 10 || level == 3)									// CPU Mode with Mouse
+			{
+				Destroy (gameObject);												// Destroys the object when the specific level is loaded
+			}
+			else
+				DontDestroyOnLoad (transform.gameObject);	
 		}
-		else
-			DontDestroyOnLoad (transform.gameObject);	
+		if(M2)
+		{
+			if (level == 9 || level == 10 || level == 3)									// CPU Mode with Mouse
+			{
+				Destroy (gameObject);												// Destroys the object when the specific level is loaded
+			}
+			else
+				DontDestroyOnLoad (transform.gameObject);	
+		}
 	}
 }

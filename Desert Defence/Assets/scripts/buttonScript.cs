@@ -26,13 +26,18 @@ public class buttonScript : MonoBehaviour
 		//-------------------------------------------//
 		public void UpgradeTower (Tower currentTower)
 		{
+		//		Update ();
 				Debug.Log ("Type: " + currentTower.type + " level: " + currentTower.level);
-				if (currentTower.upgradeCost <= gameMgr.gears) {
-						nextLv = currentTower.level + 1;
-						gameMgr.gears -= currentTower.upgradeCost;
-				} else {
-						nextLv = currentTower.level;		
+				if (currentTower.upgradeCost <= gameMgr.gears) 
+				{
+					nextLv = currentTower.level + 1;
+					gameMgr.gears -= currentTower.upgradeCost;
+				} 
+				else 
+				{
+					nextLv = currentTower.level;		
 				}
+	
 				//Debug.Log ("upgradetower adding variable. om towerlevel = högsta &/ gold != enough -> deactivate buton och kolla varje frame antar jag?");
 				switch (currentTower.type) {
 				case TowerType.Mortar:
@@ -117,4 +122,25 @@ public class buttonScript : MonoBehaviour
 			
 		}
 		
+	/*	void Update()
+	{
+		GameObject Upgrades = GameObject.FindGameObjectWithTag ("More Towers");
+		Upgrdes = GetComponent
+		GameObject noUpgrade = GameObject.FindGameObjectWithTag("Upgrades");
+		if(Upgrades.upgradeCost > gameMgr.gears)
+		{
+		//	noUpgrade.SetActive(true);
+			noUpgrade.SetActive(false);
+		}
+		if(Upgrades.upgradeCost <= gameMgr.gears)
+		{
+			noUpgrade.SetActive(true);
+		}*/
+	/*	GameObject Upgrade = GameObject.FindGameObjectWithTag("subButtons");
+		if(Input.GetKeyDown(KeyCode.U))
+		{
+			UpgradeTower();
+		}
+	}*/
 }
+		
