@@ -246,8 +246,14 @@ public class EnemySpawn : MonoBehaviour
 				gameMgr.gears = 45;
 				GameObject CrashMusic = GameObject.FindGameObjectWithTag("Music");
 				GameObject DestroyParty = GameObject.Find("Music Box 2");
+				GameObject ObliterateFun = GameObject.Find("Music Box 3");
+				GameObject TerimatetheJoy = GameObject.Find("Music Box 4");
+				GameObject SteamRollHappines = GameObject.Find("Music Box 5");
 				Destroy(CrashMusic);
 				Destroy(DestroyParty);
+				Destroy(ObliterateFun);
+				Destroy(TerimatetheJoy);
+				Destroy(SteamRollHappines);
 				Application.LoadLevel("NewMainMenu");
 			}
 			GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 1.4f, 156, 64), menu);

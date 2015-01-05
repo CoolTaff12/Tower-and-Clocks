@@ -64,7 +64,9 @@ public class Main_Menu_Music_Box : MonoBehaviour
 	{	
 		GameObject M1 = GameObject.Find ("Music Box");
 		GameObject M2 = GameObject.Find ("Music Box 2");
+		GameObject M3 = GameObject.Find ("Music Box 3");
 		GameObject M4 = GameObject.Find ("Music Box 4");
+		GameObject M5 = GameObject.Find ("Music Box 5");
 
 		if(M1)
 		{
