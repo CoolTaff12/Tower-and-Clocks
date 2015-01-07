@@ -49,7 +49,7 @@ public class EnemySpawn : MonoBehaviour
 		public Texture2D pause;
 
 		//-----------------------------------------------
-		private enum MenuStates { Runs, PausedMenu, Help1, Help2, Help3, Help4, Tutorial1, Tutorial2};
+		private enum MenuStates { Runs, PausedMenu, Help1, Help2, Help3, Help4, Options, Tutorial1, Tutorial2};
 		private MenuStates currState;
 		public GUISkin trueMenu;
 		public Texture2D HTP1;
@@ -58,6 +58,15 @@ public class EnemySpawn : MonoBehaviour
 		public Texture2D HTP4;
 		public Texture2D Next;
 		public Texture2D Back;
+		public Texture2D m1;
+		public Texture2D m2;
+		public Texture2D m3;
+		public Texture2D m4;
+
+		//----------------------------------------------
+
+		public GameObject[] noEdit;
+		public GameObject[] EnemyTarget;
 
 		//------------------------------------------------
 		void Awake () 
@@ -72,10 +81,13 @@ public class EnemySpawn : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				Time.timeScale = 1f;
-				gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
-				wave = 1f;
-				spawnTimer = 10;
+			noEdit[0].SetActive(true);
+			noEdit[1].SetActive(true);
+			Time.timeScale = 1f;
+			gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+			wave = 1f;
+			spawnTimer = 10;
+			EnemyTarget = GameObject.FindGameObjectsWithTag ("Target");
 		}
 
 		void OnGUI()
@@ -109,60 +121,190 @@ public class EnemySpawn : MonoBehaviour
 				case MenuStates.Help4:
 					DrawHelp4();
 					break;
+				case  MenuStates.Options:
+					DrawOptions();
+					break;
 			}
-			if (wave > 16 && Application.loadedLevelName ==("Tutorial"))
+		if (wave > 14 
+		   	&& EnemyTarget.Length == 0
+		   	&& Application.loadedLevelName ==("Tutorial"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
 			{
-				Time.timeScale = 0f;
-				if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
-				{
-					gameMgr.health += 5;
-					gameMgr.gears += 30;
-					Application.LoadLevel(Application.loadedLevel + 1);
-				}
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel(Application.loadedLevel + 1);
 			}
-			if (wave > 26 && Application.loadedLevelName ==("LevelSix"))
+		}
+		if (wave > 16 
+		    && EnemyTarget.Length == 0
+		    && Application.loadedLevelName ==("LevelOne"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
 			{
-				Time.timeScale = 0f;
-				if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
-				{
-					gameMgr.health += 5;
-					gameMgr.gears += 30;
-					Application.LoadLevel(Application.loadedLevel + 1);
-				}
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel(Application.loadedLevel + 1);
+			}
 		}
+
+		if (wave > 18 
+		    && EnemyTarget.Length == 0
+		    && Application.loadedLevelName ==("LevelTwo"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+			{
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel(Application.loadedLevel + 1);
+			}
 		}
+
+		if (wave > 22 
+		    && EnemyTarget.Length == 0
+		    && Application.loadedLevelName ==("LevelFour"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+			{
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel(Application.loadedLevel + 1);
+			}
+		}
+
+		if (wave > 24 
+		    && EnemyTarget.Length == 0
+		    && Application.loadedLevelName ==("Herman_27"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+			{
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel(Application.loadedLevel + 1);
+			}
+		}
+
+		if (wave > 28 
+	   		&& EnemyTarget.Length == 0
+		    && Application.loadedLevelName ==("LevelSeven"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+			{
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel(Application.loadedLevel + 1);
+			}
+		}
+
+		if (wave > 32 
+		    && EnemyTarget.Length == 0
+		    && Application.loadedLevelName ==("LevelEight"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+			{
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel(Application.loadedLevel + 1);
+			}
+		}
+
+		if (wave > 34 
+		    && EnemyTarget.Length == 0
+		    && Application.loadedLevelName ==("Herman_20"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+			{
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel(Application.loadedLevel + 1);
+			}
+		}
+
+		if (wave > 36 
+		    && EnemyTarget.Length == 0
+		    && Application.loadedLevelName ==("LevelCave"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+			{
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel(Application.loadedLevel + 1);
+			}
+		}
+		if (wave > 40 
+		    && EnemyTarget.Length == 0
+		    && Application.loadedLevelName ==("LevelJungle"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+			{
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel("Credits");
+			}
+		}
+	}
 
 	//----------------------------------------------------------------------------
 		private void DrawRuns()
 		{
 			Time.timeScale = 1f;
-			if (Application.loadedLevelName == ("LevelSix")) 
+			if (Application.loadedLevelName == ("LevelSeven")) 
 			{
-			Time.timeScale = 1.5f;
-			Debug.Log("Wow, it goes " + Time.timeScale + " as fast!");
+				Time.timeScale = 1.5f;
+				Debug.Log("Wow, it goes " + Time.timeScale + " as fast!");
 			}
-			if (GUI.Button (new Rect (300, 0, 200, 80), "")) 
+			if (GUI.Button (new Rect (Screen.width / 2.4f, 0, Screen.width / 6f, Screen.height / 12f), "")) 
 			{
+				noEdit[0].SetActive(false);
+				noEdit[1].SetActive(false);
 				currState = MenuStates.PausedMenu;
 			}
-			GUI.DrawTexture (new Rect (300, 0, 200, 80), pause);
+			GUI.DrawTexture (new Rect (Screen.width / 2.4f, 0, Screen.width / 6f, Screen.height / 12f), pause);
 		}
 		private void DrawPausedMenu()
 		{
 			GUI.DrawTexture (new Rect (Screen.width / 3.5f, Screen.height / 10f, 356,512), gameMenu);
 			if (GUI.Button (new Rect (Screen.width / 2.5f, Screen.height / 4f, 156, 64),"")) 
 			{
+				noEdit[0].SetActive(true);
+				noEdit[1].SetActive(true);
 				currState = MenuStates.Runs;
 			}
 			GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 4f, 156, 64), resume);
-			if (GUI.Button (new Rect (Screen.width / 2.45f, Screen.height / 2.6f, 156, 64),"")) 
+			if (GUI.Button (new Rect (Screen.width / 2.5f, Screen.height / 2.6f, 156, 64),"")) 
 			{
 				currState = MenuStates.Help1;
 			}
-			GUI.DrawTexture (new Rect (Screen.width / 2.45f, Screen.height / 2.6f, 156, 64), help);
+			GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 2.6f, 156, 64), help);
+		if (GUI.Button (new Rect (Screen.width / 2.5f, Screen.height / 1.8f, 156, 64),"")) 
+		{
+			currState = MenuStates.Options;
+		}
 			GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 1.8f, 156, 64), options);
 			if (GUI.Button (new Rect (Screen.width / 2.5f, Screen.height / 1.4f, 156, 64),"")) 
 			{
+				gameMgr.health = 10;
+				gameMgr.gears = 45;
+				GameObject CrashMusic = GameObject.FindGameObjectWithTag("Music");
+				GameObject DestroyParty = GameObject.Find("Music Box 2");
+				GameObject ObliterateFun = GameObject.Find("Music Box 3");
+				GameObject TerimatetheJoy = GameObject.Find("Music Box 4");
+				GameObject SteamRollHappines = GameObject.Find("Music Box 5");
+				Destroy(CrashMusic);
+				Destroy(DestroyParty);
+				Destroy(ObliterateFun);
+				Destroy(TerimatetheJoy);
+				Destroy(SteamRollHappines);
 				Application.LoadLevel("NewMainMenu");
 			}
 			GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 1.4f, 156, 64), menu);
@@ -236,37 +378,87 @@ public class EnemySpawn : MonoBehaviour
 		GUI.DrawTexture(new Rect(Screen.width / 7f, Screen.height / 1.6f, 200, 67), Back);
 		
 		}
+
+
+	//---------------------------------------------------------------
+	
+	private void DrawOptions()
+	{	
+		GUILayout.BeginArea(new Rect(-250, 100, 1280, 800));
+		GUILayout.BeginHorizontal();
+		GUILayout.FlexibleSpace();
+		GUILayout.Label("Select Music");
+		GUILayout.FlexibleSpace();
+		GUILayout.EndHorizontal();
+		GUILayout.EndArea();
+		int changeSong = Main_Menu_Music_Box.music;
+		
+		if (GUI.Button (new Rect (Screen.width - 660, Screen.height - 320, Screen.width/3, Screen.height/9), ""))
+		{
+			changeSong = 1;
+			Main_Menu_Music_Box.music = changeSong;
+		}
+		GUI.DrawTexture(new Rect(Screen.width - 660, Screen.height - 320, Screen.width/3, Screen.height/9), m1);
+		if (GUI.Button (new Rect (Screen.width - 330, Screen.height - 320, Screen.width/3, Screen.height/9), ""))
+		{
+			changeSong = 2;
+			Main_Menu_Music_Box.music = changeSong;
+		}
+		GUI.DrawTexture(new Rect(Screen.width - 330, Screen.height - 320, Screen.width/3, Screen.height/9), m2);
+		if (GUI.Button (new Rect (Screen.width - 660, Screen.height - 210, Screen.width/3, Screen.height/9), ""))
+		{
+			changeSong = 3;
+			Main_Menu_Music_Box.music = changeSong;
+		}
+		GUI.DrawTexture(new Rect(Screen.width - 660, Screen.height - 210, Screen.width/3, Screen.height/9), m3);
+		if (GUI.Button (new Rect (Screen.width - 330, Screen.height - 210, Screen.width/3, Screen.height/9), ""))
+		{
+			changeSong = 4;
+			Main_Menu_Music_Box.music = changeSong;
+		}
+		GUI.DrawTexture(new Rect(Screen.width - 330, Screen.height - 210, Screen.width/3, Screen.height/9), m4);
+		if (GUI.Button (new Rect(Screen.width / 2.6f, Screen.height / 1.2f, 200, 80), ""))
+		{
+			currState = MenuStates.PausedMenu;
+		}
+		GUI.DrawTexture(new Rect(Screen.width / 2.6f, Screen.height / 1.2f, 200, 80), pause);
+
+	}
 	//----------------------------------------------------------------------------
 	
 		// Update is called once per frame
 		void Update ()
 		{
-				spawnTimer -= Time.deltaTime;
-				//Debug.Log ("Wave Number: " + wave);
-				if (Input.GetKeyDown (KeyCode.Space) || spawnTimer <= 0) {
-						SpawnAll ();
-				}
-				if (targetCountNormal >= maxNormals) {
-						CancelInvoke ("SpawnNormal");
-						wave++;
-						wavePoints++;
-						maxNormals += NormalsPerWave;
-						targetCountNormal = 0;
-				}
-				if (targetCountSpeedy >= maxSpeedies) {
-						CancelInvoke ("SpawnSpeedy");
-						wave++;
-						wavePoints++;
-						maxSpeedies += SpeediesPerWave;
-						targetCountSpeedy = 0;
-				}
-				if (targetCountTank >= maxTanks) {
-						CancelInvoke ("SpawnTank");
-						wave++;
-						wavePoints++;
-						maxTanks += TanksPerWave;
-						targetCountTank = 0;
-				}
+			spawnTimer -= Time.deltaTime;
+			//Debug.Log ("Wave Number: " + wave);
+			if (Input.GetKeyDown (KeyCode.Space) || spawnTimer <= 0) 
+			{
+				SpawnAll ();
+			}
+			if (targetCountNormal >= maxNormals) 
+			{
+				CancelInvoke ("SpawnNormal");
+				wave++;
+				wavePoints++;
+				maxNormals += NormalsPerWave;
+					targetCountNormal = 0;
+			}
+			if (targetCountSpeedy >= maxSpeedies) 
+			{
+				CancelInvoke ("SpawnSpeedy");
+				wave++;
+				wavePoints++;
+				maxSpeedies += SpeediesPerWave;
+				targetCountSpeedy = 0;
+			}
+			if (targetCountTank >= maxTanks) 
+			{
+				CancelInvoke ("SpawnTank");
+				wave++;
+				wavePoints++;
+				maxTanks += TanksPerWave;
+				targetCountTank = 0;
+			}
 			/*	if(wave > 10 && Application.loadedLevelName ==("Tutorial"))
 				{
 					Quaternion rot = directionalLight.transform.rotation;

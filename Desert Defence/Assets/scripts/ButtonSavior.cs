@@ -16,16 +16,29 @@ public class ButtonSavior : MonoBehaviour
 		void Update ()
 		{
 				gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
-				if (gameMgr.health <= 0) {
-						Time.timeScale = 1f;
-						gameMgr.health = gameMgr.startHealth;
-						EndGame ();
-	
-				}
+			if (gameMgr.health <= 0)
+			{
+				Time.timeScale = 1f;
+				gameMgr.health = gameMgr.startHealth;
+				ChangeLevel();
+				EndGame();
+			}
+		}
+
+		IEnumerator ChangeLevel()
+		{
+			Debug.Log ("Flash!");
+			float fadeTime = GameObject.Find ("GameManager").GetComponent<FadingLevels> ().BeginFade (1);
+			yield return new WaitForSeconds (fadeTime);
 		}
 
 		public virtual void EndGame ()
 		{
+				ChangeLevel();
+				GameObject CrashMusic = GameObject.FindGameObjectWithTag("Music");
+				GameObject DestroyParty = GameObject.Find("Music Box 2");
+				Destroy(CrashMusic);
+				Destroy(DestroyParty);
 				Application.LoadLevel ("GameOverScreen");
 		}
 

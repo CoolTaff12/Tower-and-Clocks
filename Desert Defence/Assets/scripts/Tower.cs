@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Tower : MonoBehaviour
@@ -38,6 +39,8 @@ public class Tower : MonoBehaviour
 				barrelLoc;
 		private Transform actualBarrelLoc;
 		public TowerType type;
+		private GameObject[] noUpgrade;
+	//	public 	bool UpgradeOn = false;
 
 		protected virtual void Start ()
 		{
@@ -86,24 +89,42 @@ public class Tower : MonoBehaviour
 
 		protected virtual void Update ()
 		{
+			cooldown -= Time.deltaTime;
+			//transform.position = startPos + Vector3.up * Mathf.Sin (Time.time * 3f) * 0.1f;
+			currentPosition = transform.position;
+			closestTarget = FindClosestEnemy ();
+			LookAt ();
 		
-				cooldown -= Time.deltaTime;
-				//transform.position = startPos + Vector3.up * Mathf.Sin (Time.time * 3f) * 0.1f;
-				currentPosition = transform.position;
-				closestTarget = FindClosestEnemy ();
-				LookAt ();
 		
-		
-				if (closestTarget != null && cooldown <= 0) {
-						target = closestTarget.transform;
-						Fire ();
-						cooldown = secBetweenShots;
-				}
+			if (closestTarget != null && cooldown <= 0) 
+			{
+				target = closestTarget.transform;
+				Fire ();
+				cooldown = secBetweenShots;
+			}
 
-				if (!noMove) {
-						transform.position = startPos + Vector3.up * Mathf.Sin (Time.time) * 0.2f;
+			if (!noMove)
+			{
+				transform.position = startPos + Vector3.up * Mathf.Sin (Time.time) * 0.2f;
+			}
+			if (upgradeCost <= gameMgr.gears)
+			{
+				Debug.Log("It's On!");
+				noUpgrade = GameObject.FindGameObjectsWithTag("Upgrades");
+				for(int i = 0; i < noUpgrade.Length; i ++)
+				{
+					noUpgrade[i].GetComponent<Button>().interactable = true;
 				}
-		
+			}
+			else
+			{
+				Debug.Log("It's Off!");
+				noUpgrade = GameObject.FindGameObjectsWithTag("Upgrades");
+				for(int i = 0; i < noUpgrade.Length; i ++)
+				{
+					noUpgrade[i].GetComponent<Button>().interactable = false;
+				}
+			}
 		}
 	
 		public virtual void Fire ()//Shoots a bullet.

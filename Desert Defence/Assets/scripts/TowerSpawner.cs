@@ -38,7 +38,7 @@ public class TowerSpawner : MonoBehaviour
 		void Start ()
 		{
 				gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
-				transform.renderer.material.color = new Color (0.2F, 0.3F, 0.4F, 0F);
+				transform.renderer.material.color = new Color (0.2F, 0.3F, 0.4F, 0.3F);
 		}
 	
 		// Update is called once per frame
@@ -113,7 +113,7 @@ public class TowerSpawner : MonoBehaviour
 
 		void OnMouseExit ()
 		{
-				transform.renderer.material.color = new Color (0.2F, 0.3F, 0.4F, 0F);
+				transform.renderer.material.color = new Color (0.2F, 0.3F, 0.4F, 0.3F);
 
 
 		}
