@@ -1,11 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\ButtonSavior.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\New Import\New Scripts\CameraControl.cs">
     <Files>
-      <File FileName="Assets\scripts\TowerSpawner.cs" Line="112" Column="4" />
-      <File FileName="Assets\New Import\New Scripts\Staff_Credis.cs" Line="114" Column="20" />
-      <File FileName="Assets\scripts\Tower.cs" Line="120" Column="5" />
+      <File FileName="Assets\scripts\TowerSpawner.cs" Line="101" Column="3" />
+      <File FileName="Assets\New Import\New Scripts\Staff_Credis.cs" Line="102" Column="22" />
+      <File FileName="Assets\scripts\Tower.cs" Line="111" Column="5" />
       <File FileName="Assets\scripts\ButtonSavior.cs" Line="92" Column="5" />
+      <File FileName="Assets\New Import\New Scripts\NukeAmmo.cs" Line="15" Column="17" />
+      <File FileName="Assets\scripts\SpawnManager.cs" Line="31" Column="21" />
+      <File FileName="Assets\New Import\New Scripts\CameraControl.cs" Line="28" Column="46" />
+      <File FileName="Assets\scripts\EnemySpawn.cs" Line="221" Column="4" />
+      <File FileName="Assets\New Import\New Scripts\Main_Menu_Music_Box.cs" Line="107" Column="8" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
