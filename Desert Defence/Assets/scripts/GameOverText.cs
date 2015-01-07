@@ -9,8 +9,16 @@ public class GameOverText : MonoBehaviour
 		public GameObject Button2;
 		Text text;
 		public float highscore = 1f;
+		public AudioClip[] audioClip;
+
+
+		void PlaySound(int clip)													// This makes sure the audio plays and defines the audio clip array with clip 
+		{
+			audio.clip = audioClip [clip];
+			audio.Play ();
+		}
 	
-		// Use this for initialization
+
 		void Awake ()
 		{
 				Time.timeScale = 1f;
@@ -27,6 +35,7 @@ public class GameOverText : MonoBehaviour
 		if(highscore > 7.7f)
 		{
 			text.text = "Y o u r  ";
+		//	PlaySound (0);	
 		}
 		if(highscore > 8f)
 		{
@@ -39,9 +48,6 @@ public class GameOverText : MonoBehaviour
 		if(highscore > 9f)
 		{
 			text.text = "Y o u r  f i n a l  s c o r e : " + "\t" + gameMgr.score;
-		}
-		if(highscore > 9f)
-		{
 			Button1.SetActive(true);
 			Button2.SetActive(true);
 		}

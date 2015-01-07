@@ -23,7 +23,6 @@ public class TypingTextFade : MonoBehaviour
 		{
 			guiText.text += letter;
 			if (sound)
-				audio.PlayOneShot (sound);
 			yield return 0;
 			yield return new WaitForSeconds (letterPause);
 		}      
