@@ -23,6 +23,9 @@ public class Staff_Credis : MonoBehaviour
 			Names[4].SetActive(false);
 			Names[5].SetActive(false);
 			Names[6].SetActive(false);
+			Names[7].SetActive(false);
+			Names[8].SetActive(false);
+
 		}
 		if(durations > 4f)
 		{
@@ -33,6 +36,8 @@ public class Staff_Credis : MonoBehaviour
 			Names[4].SetActive(false);
 			Names[5].SetActive(false);
 			Names[6].SetActive(false);
+			Names[7].SetActive(false);
+			Names[8].SetActive(false);
 		}
 		if(durations > 8f)
 		{
@@ -43,6 +48,8 @@ public class Staff_Credis : MonoBehaviour
 			Names[4].SetActive(false);
 			Names[5].SetActive(false);
 			Names[6].SetActive(false);
+			Names[7].SetActive(false);
+			Names[8].SetActive(false);
 		}
 		if(durations > 12f)
 		{
@@ -53,8 +60,10 @@ public class Staff_Credis : MonoBehaviour
 			Names[4].SetActive(false);
 			Names[5].SetActive(false);
 			Names[6].SetActive(false);
+			Names[7].SetActive(false);
+			Names[8].SetActive(false);
 		}
-		if(durations > 16f)
+		if(durations > 18f)
 		{
 			Names[0].SetActive(false);
 			Names[1].SetActive(false);
@@ -63,6 +72,8 @@ public class Staff_Credis : MonoBehaviour
 			Names[4].SetActive(true);
 			Names[5].SetActive(false);
 			Names[6].SetActive(false);
+			Names[7].SetActive(false);
+			Names[8].SetActive(false);
 		}
 		if(durations > 22f)
 		{
@@ -73,8 +84,10 @@ public class Staff_Credis : MonoBehaviour
 			Names[4].SetActive(false);
 			Names[5].SetActive(true);
 			Names[6].SetActive(false);
+			Names[7].SetActive(false);
+			Names[8].SetActive(false);
 		}
-		if(durations > 28f)
+		if(durations > 26f)
 		{
 			Names[0].SetActive(false);
 			Names[1].SetActive(false);
@@ -83,8 +96,22 @@ public class Staff_Credis : MonoBehaviour
 			Names[4].SetActive(false);
 			Names[5].SetActive(false);
 			Names[6].SetActive(true);
+			Names[7].SetActive(false);
+			Names[8].SetActive(false);
 		}
-		if(durations > 36f)
+		if(durations > 32f)
+		{
+			Names[0].SetActive(false);
+			Names[1].SetActive(false);
+			Names[2].SetActive(false);
+			Names[3].SetActive(false);
+			Names[4].SetActive(false);
+			Names[5].SetActive(false);
+			Names[6].SetActive(false);
+			Names[7].SetActive(true);
+			Names[8].SetActive(true);
+		}
+		if(durations > 38f)
 		{
 			durations = 0f;
 		}
