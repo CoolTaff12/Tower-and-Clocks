@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Tower : MonoBehaviour
@@ -38,6 +39,8 @@ public class Tower : MonoBehaviour
 				barrelLoc;
 		private Transform actualBarrelLoc;
 		public TowerType type;
+		private GameObject[] noUpgrade;
+	//	public 	bool UpgradeOn = false;
 
 		protected virtual void Start ()
 		{
@@ -104,21 +107,24 @@ public class Tower : MonoBehaviour
 			{
 				transform.position = startPos + Vector3.up * Mathf.Sin (Time.time) * 0.2f;
 			}
-			GameObject[] noUpgrade = GameObject.FindGameObjectsWithTag("Upgrades");
-		/*	if (upgradeCost < gameMgr.gears)
+			if (upgradeCost <= gameMgr.gears)
 			{
-				for(int i = 0 ; i < noUpgrade.Length ; i ++)
+				Debug.Log("It's On!");
+				noUpgrade = GameObject.FindGameObjectsWithTag("Upgrades");
+				for(int i = 0; i < noUpgrade.Length; i ++)
 				{
-					noUpgrade[i].SetActive(true);
+					noUpgrade[i].GetComponent<Button>().interactable = true;
 				}
 			}
-			if (upgradeCost > gameMgr.gears)
+			else
 			{
-				for(int i = 0 ; i < noUpgrade.Length ; i ++)
+				Debug.Log("It's Off!");
+				noUpgrade = GameObject.FindGameObjectsWithTag("Upgrades");
+				for(int i = 0; i < noUpgrade.Length; i ++)
 				{
-					noUpgrade[i].SetActive(false);
+					noUpgrade[i].GetComponent<Button>().interactable = false;
 				}
-			}*/
+			}
 		}
 	
 		public virtual void Fire ()//Shoots a bullet.

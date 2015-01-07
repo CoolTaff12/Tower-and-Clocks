@@ -7,9 +7,11 @@ public class CameraControl : MonoBehaviour
 	public Camera miniCamera2;
 	public Camera miniCamera3;
 	public int located = 0;
+	public int view = 0;
 	//------------------------------
 	public float speed;	
 	public Vector3 speedV;
+	public bool projectionChange;
 	
 		// Use this for initialization
 		void Start ()
@@ -26,7 +28,7 @@ public class CameraControl : MonoBehaviour
 				float mousePosY = Input.mousePosition.y; 
 				int scrollDistance = 2; 
 				float scrollSpeed = 3f * Camera.main.orthographicSize + 2;
-				Vector3 aPosition = new Vector3 (0, 0, 0);
+			//	Vector3 aPosition = new Vector3 (0, 0, 0);
 				float ScrollAmount = scrollSpeed * Time.deltaTime;
 				const float orthographicSizeMin = 5f;
 				const float orthographicSizeMax = 25f;
@@ -57,9 +59,32 @@ public class CameraControl : MonoBehaviour
 				if (Input.GetAxis ("Mouse ScrollWheel") > -0) { // back
 						Camera.main.orthographicSize *= 0.9f;
 				}
+				//Change the Perspective to Orthographic
+
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			view ++;
+		}
+			
+		if (view == 0)
+		{ 
+			Camera.main.orthographic = false;
+			projectionChange = true;
+		}
+
+		if (view == 1)
+		{
+			Camera.main.orthographic = true;
+			projectionChange = false;
+		}
+
+		if (view == 2)							
+		{
+			view = 0;	
+		}
 
 				//Change the main cameras angle.
-				if (Input.GetKey(KeyCode.DownArrow) && transform.rotation.x < 52.21781)
+		/*		if (Input.GetKey(KeyCode.DownArrow) && transform.rotation.x < 52.21781)
 				{
 					Vector3 rotation = -speedV;
 					rotation = rotation * Time.deltaTime * speed;			
@@ -71,7 +96,7 @@ public class CameraControl : MonoBehaviour
 					Vector3 rotation = speedV;
 					rotation = rotation * Time.deltaTime * speed;			
 					transform.Rotate(rotation);
-				}
+				}*/
 
 				Camera.main.orthographicSize = Mathf.Clamp (Camera.main.orthographicSize, orthographicSizeMin, orthographicSizeMax);
 		//Switching Minicameras
@@ -86,23 +111,23 @@ public class CameraControl : MonoBehaviour
 		
 		if (located == 0)
 		{
-			miniCamera1.camera.active = false;	
-			miniCamera2.camera.active = true;	
-			miniCamera3.camera.active = false;	
+			miniCamera1.active = false;	
+			miniCamera2.active = true;	
+			miniCamera3.active = false;	
 			Debug.Log("Tara 1");
 		}
 		if (located == 1)
 		{
-			miniCamera1.camera.active = false;
-			miniCamera2.camera.active = false;	
-			miniCamera3.camera.active = true;
+			miniCamera1.active = false;
+			miniCamera2.active = false;	
+			miniCamera3.active = true;
 			Debug.Log("Tara 2");
 		}
 		if (located == 2)
 		{
-			miniCamera1.camera.active = true;
-			miniCamera2.camera.active = false;	
-			miniCamera3.camera.active = false;	
+			miniCamera1.active = true;
+			miniCamera2.active = false;	
+			miniCamera3.active = false;	
 			Debug.Log("Tara 3");
 		}
 	}

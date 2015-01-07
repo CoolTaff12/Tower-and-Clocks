@@ -191,7 +191,7 @@ public class EnemySpawn : MonoBehaviour
 
 		if (wave > 28 
 	   		&& EnemyTarget.Length == 0
-	   	 	&& Application.loadedLevelName ==("LevelSix"))
+		    && Application.loadedLevelName ==("LevelSeven"))
 		{
 			Time.timeScale = 0f;
 			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
@@ -204,7 +204,20 @@ public class EnemySpawn : MonoBehaviour
 
 		if (wave > 32 
 		    && EnemyTarget.Length == 0
-		    && Application.loadedLevelName ==("LevelSeven"))
+		    && Application.loadedLevelName ==("LevelEight"))
+		{
+			Time.timeScale = 0f;
+			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
+			{
+				gameMgr.health += 5;
+				gameMgr.gears += 30;
+				Application.LoadLevel(Application.loadedLevel + 1);
+			}
+		}
+
+		if (wave > 34 
+		    && EnemyTarget.Length == 0
+		    && Application.loadedLevelName ==("Herman_20"))
 		{
 			Time.timeScale = 0f;
 			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
@@ -245,18 +258,18 @@ public class EnemySpawn : MonoBehaviour
 		private void DrawRuns()
 		{
 			Time.timeScale = 1f;
-			if (Application.loadedLevelName == ("LevelSix")) 
+			if (Application.loadedLevelName == ("LevelSeven")) 
 			{
-			Time.timeScale = 1.5f;
-			Debug.Log("Wow, it goes " + Time.timeScale + " as fast!");
+				Time.timeScale = 1.5f;
+				Debug.Log("Wow, it goes " + Time.timeScale + " as fast!");
 			}
-			if (GUI.Button (new Rect (300, 0, 200, 80), "")) 
+			if (GUI.Button (new Rect (Screen.width / 2.4f, 0, Screen.width / 6f, Screen.height / 12f), "")) 
 			{
 				noEdit[0].SetActive(false);
 				noEdit[1].SetActive(false);
 				currState = MenuStates.PausedMenu;
 			}
-			GUI.DrawTexture (new Rect (300, 0, 200, 80), pause);
+			GUI.DrawTexture (new Rect (Screen.width / 2.4f, 0, Screen.width / 6f, Screen.height / 12f), pause);
 		}
 		private void DrawPausedMenu()
 		{
@@ -416,32 +429,36 @@ public class EnemySpawn : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-				spawnTimer -= Time.deltaTime;
-				//Debug.Log ("Wave Number: " + wave);
-				if (Input.GetKeyDown (KeyCode.Space) || spawnTimer <= 0) {
-						SpawnAll ();
-				}
-				if (targetCountNormal >= maxNormals) {
-						CancelInvoke ("SpawnNormal");
-						wave++;
-						wavePoints++;
-						maxNormals += NormalsPerWave;
-						targetCountNormal = 0;
-				}
-				if (targetCountSpeedy >= maxSpeedies) {
-						CancelInvoke ("SpawnSpeedy");
-						wave++;
-						wavePoints++;
-						maxSpeedies += SpeediesPerWave;
-						targetCountSpeedy = 0;
-				}
-				if (targetCountTank >= maxTanks) {
-						CancelInvoke ("SpawnTank");
-						wave++;
-						wavePoints++;
-						maxTanks += TanksPerWave;
-						targetCountTank = 0;
-				}
+			spawnTimer -= Time.deltaTime;
+			//Debug.Log ("Wave Number: " + wave);
+			if (Input.GetKeyDown (KeyCode.Space) || spawnTimer <= 0) 
+			{
+				SpawnAll ();
+			}
+			if (targetCountNormal >= maxNormals) 
+			{
+				CancelInvoke ("SpawnNormal");
+				wave++;
+				wavePoints++;
+				maxNormals += NormalsPerWave;
+					targetCountNormal = 0;
+			}
+			if (targetCountSpeedy >= maxSpeedies) 
+			{
+				CancelInvoke ("SpawnSpeedy");
+				wave++;
+				wavePoints++;
+				maxSpeedies += SpeediesPerWave;
+				targetCountSpeedy = 0;
+			}
+			if (targetCountTank >= maxTanks) 
+			{
+				CancelInvoke ("SpawnTank");
+				wave++;
+				wavePoints++;
+				maxTanks += TanksPerWave;
+				targetCountTank = 0;
+			}
 			/*	if(wave > 10 && Application.loadedLevelName ==("Tutorial"))
 				{
 					Quaternion rot = directionalLight.transform.rotation;
