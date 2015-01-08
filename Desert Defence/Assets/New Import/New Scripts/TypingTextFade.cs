@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class TypingTextFade : MonoBehaviour 
 {
-	public float letterPause = 0.2f;
+	public float letterPause;
 	public AudioClip sound;
 	
 	string message;
