@@ -67,7 +67,6 @@ public class EnemySpawn : MonoBehaviour
 		//----------------------------------------------
 
 		public GameObject[] noEdit;
-		public GameObject[] EnemyTarget;
 
 		//------------------------------------------------
 		void Awake () 
@@ -88,7 +87,6 @@ public class EnemySpawn : MonoBehaviour
 			gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 			wave = 1f;
 			spawnTimer = 10;
-			EnemyTarget = GameObject.FindGameObjectsWithTag ("Target");
 		}
 
 		void OnGUI()
@@ -130,34 +128,34 @@ public class EnemySpawn : MonoBehaviour
 					break;
 			}
 		if (wave > 14 
-		   	&& EnemyTarget.Length == 0
+		   	//&& EnemyTarget.Length == 0
 		   	&& Application.loadedLevelName ==("Tutorial"))
 		{
 			currState = MenuStates.Victory;
 		}
 		if (wave > 16 
-		    && EnemyTarget.Length == 0
+		    //&& EnemyTarget.Length == 0
 		    && Application.loadedLevelName ==("LevelOne"))
 		{
 			currState = MenuStates.Victory;
 		}
 
 		if (wave > 18 
-		    && EnemyTarget.Length == 0
+		 //   && EnemyTarget.Length == 0
 		    && Application.loadedLevelName ==("LevelTwo"))
 		{
 			currState = MenuStates.Victory;
 		}
 
 		if (wave > 22 
-		    && EnemyTarget.Length == 0
+		   // && EnemyTarget.Length == 0
 		    && Application.loadedLevelName ==("LevelFour"))
 		{
 			currState = MenuStates.Victory;
 		}
 
 		if (wave > 24 
-		    && EnemyTarget.Length == 0
+		  //  && EnemyTarget.Length == 0
 		    && Application.loadedLevelName ==("Herman_27"))
 		{
 			Time.timeScale = 0f;
@@ -170,7 +168,7 @@ public class EnemySpawn : MonoBehaviour
 		}
 
 		if (wave > 28 
-	   		&& EnemyTarget.Length == 0
+	   		//&& EnemyTarget.Length == 0
 		    && Application.loadedLevelName ==("LevelSeven"))
 		{
 			Time.timeScale = 0f;
@@ -183,7 +181,7 @@ public class EnemySpawn : MonoBehaviour
 		}
 
 		if (wave > 32 
-		    && EnemyTarget.Length == 0
+		 //   && EnemyTarget.Length == 0
 		    && Application.loadedLevelName ==("LevelEight"))
 		{
 			Time.timeScale = 0f;
@@ -196,7 +194,7 @@ public class EnemySpawn : MonoBehaviour
 		}
 
 		if (wave > 34 
-		    && EnemyTarget.Length == 0
+		   // && EnemyTarget.Length == 0
 		    && Application.loadedLevelName ==("Herman_20"))
 		{
 			Time.timeScale = 0f;
@@ -209,7 +207,7 @@ public class EnemySpawn : MonoBehaviour
 		}
 
 		if (wave > 36 
-		    && EnemyTarget.Length == 0
+		   // && EnemyTarget.Length == 0
 		    && Application.loadedLevelName ==("LevelCave"))
 		{
 			Time.timeScale = 0f;
@@ -221,7 +219,7 @@ public class EnemySpawn : MonoBehaviour
 			}
 		}
 		if (wave > 40 
-		    && EnemyTarget.Length == 0
+		   // && EnemyTarget.Length == 0
 		    && Application.loadedLevelName ==("LevelJungle"))
 		{
 			Time.timeScale = 0f;
@@ -478,6 +476,7 @@ public class EnemySpawn : MonoBehaviour
 				go.GetComponent<Enemy> ().setSpawner (this);
 				go.GetComponent<Enemy> ().gameMgr = gameMgr;
 				targetCountNormal++;
+				
 		}
 
 		public virtual void SpawnSpeedy ()

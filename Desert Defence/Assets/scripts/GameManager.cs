@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 		public int lastLevel = 0;
 		public bool firstScene = true;
 
-
+	static int enemiesInScene = 0;
 
 		// Use this for initialization
 		void Awake ()

@@ -88,7 +88,6 @@
      <Compile Include="Assets\scripts\FadeAway.cs" />
      <Compile Include="Assets\scripts\GamOverScreen.cs" />
      <Compile Include="Assets\scripts\GameManager.cs" />
-     <Compile Include="Assets\scripts\GameManager_1.cs" />
      <Compile Include="Assets\scripts\GameOverText.cs" />
      <Compile Include="Assets\scripts\Path.cs" />
      <Compile Include="Assets\scripts\Path_2.cs" />

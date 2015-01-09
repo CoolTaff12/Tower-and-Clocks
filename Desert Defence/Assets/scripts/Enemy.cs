@@ -79,6 +79,7 @@ public class Enemy : MonoBehaviour
 						gameMgr.gears += gearYield;
 						gameMgr.score += pointYield * enemySpawner.wavePoints;
 						Destroy (gameObject);
+						//Enemieslist
 			
 				}
 				if (slowed == true) {
@@ -122,6 +123,7 @@ public class Enemy : MonoBehaviour
 						if (mtWP >= path.moveToWP.Length)
 						{		//If the index of MoveToTarget exceeds the length of the array, do...
 								gameMgr.health -= unitDamage;
+								
 								Destroy (gameObject);
 						}
 			
