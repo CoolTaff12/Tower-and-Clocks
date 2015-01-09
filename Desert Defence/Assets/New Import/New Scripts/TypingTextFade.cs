@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 
 public class TypingTextFade : MonoBehaviour 
 {
-	public float letterPause;
+	public float letterPause = 0.2f;
 	public AudioClip sound;
 	
 	string message;
@@ -23,6 +23,7 @@ public class TypingTextFade : MonoBehaviour
 		{
 			guiText.text += letter;
 			if (sound)
+				audio.PlayOneShot (sound);
 			yield return 0;
 			yield return new WaitForSeconds (letterPause);
 		}      

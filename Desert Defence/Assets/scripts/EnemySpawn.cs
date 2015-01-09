@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemySpawn : MonoBehaviour
 {
@@ -42,14 +43,10 @@ public class EnemySpawn : MonoBehaviour
 		//------------------------------------
 	
 		public Texture2D gameMenu;
-		public Texture2D resume;
-		public Texture2D help;
-		public Texture2D menu;
-		public Texture2D options;
 		public Texture2D pause;
 
 		//-----------------------------------------------
-		private enum MenuStates { Runs, PausedMenu, Help1, Help2, Help3, Help4, Options, Tutorial1, Tutorial2};
+		private enum MenuStates { Runs, PausedMenu, Help1, Help2, Help3, Help4, Options, Tutorial1, Tutorial2, Victory};
 		private MenuStates currState;
 		public GUISkin trueMenu;
 		public Texture2D HTP1;
@@ -62,6 +59,10 @@ public class EnemySpawn : MonoBehaviour
 		public Texture2D m2;
 		public Texture2D m3;
 		public Texture2D m4;
+
+		//----------------------------------------------
+		
+		public Texture2D Win;
 
 		//----------------------------------------------
 
@@ -120,60 +121,39 @@ public class EnemySpawn : MonoBehaviour
 					break;
 				case MenuStates.Help4:
 					DrawHelp4();
-					break;
-				case  MenuStates.Options:
+					break; 
+				case MenuStates.Options:
 					DrawOptions();
+					break;
+			case MenuStates.Victory:
+					DrawVictory();
 					break;
 			}
 		if (wave > 14 
 		   	&& EnemyTarget.Length == 0
 		   	&& Application.loadedLevelName ==("Tutorial"))
 		{
-			Time.timeScale = 0f;
-			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
-			{
-				gameMgr.health += 5;
-				gameMgr.gears += 30;
-				Application.LoadLevel(Application.loadedLevel + 1);
-			}
+			currState = MenuStates.Victory;
 		}
 		if (wave > 16 
 		    && EnemyTarget.Length == 0
 		    && Application.loadedLevelName ==("LevelOne"))
 		{
-			Time.timeScale = 0f;
-			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
-			{
-				gameMgr.health += 5;
-				gameMgr.gears += 30;
-				Application.LoadLevel(Application.loadedLevel + 1);
-			}
+			currState = MenuStates.Victory;
 		}
 
 		if (wave > 18 
 		    && EnemyTarget.Length == 0
 		    && Application.loadedLevelName ==("LevelTwo"))
 		{
-			Time.timeScale = 0f;
-			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
-			{
-				gameMgr.health += 5;
-				gameMgr.gears += 30;
-				Application.LoadLevel(Application.loadedLevel + 1);
-			}
+			currState = MenuStates.Victory;
 		}
 
 		if (wave > 22 
 		    && EnemyTarget.Length == 0
 		    && Application.loadedLevelName ==("LevelFour"))
 		{
-			Time.timeScale = 0f;
-			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
-			{
-				gameMgr.health += 5;
-				gameMgr.gears += 30;
-				Application.LoadLevel(Application.loadedLevel + 1);
-			}
+			currState = MenuStates.Victory;
 		}
 
 		if (wave > 24 
@@ -274,24 +254,21 @@ public class EnemySpawn : MonoBehaviour
 		private void DrawPausedMenu()
 		{
 			GUI.DrawTexture (new Rect (Screen.width / 3.5f, Screen.height / 10f, 356,512), gameMenu);
-			if (GUI.Button (new Rect (Screen.width / 2.5f, Screen.height / 4f, 156, 64),"")) 
+			if (GUI.Button (new Rect (Screen.width / 2.5f, Screen.height / 4f, 156, 64),"resume")) 
 			{
 				noEdit[0].SetActive(true);
 				noEdit[1].SetActive(true);
 				currState = MenuStates.Runs;
 			}
-			GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 4f, 156, 64), resume);
-			if (GUI.Button (new Rect (Screen.width / 2.5f, Screen.height / 2.6f, 156, 64),"")) 
+			if (GUI.Button (new Rect (Screen.width / 2.5f, Screen.height / 1.8f, 156, 64),"help")) 
 			{
 				currState = MenuStates.Help1;
 			}
-			GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 2.6f, 156, 64), help);
-		if (GUI.Button (new Rect (Screen.width / 2.5f, Screen.height / 1.8f, 156, 64),"")) 
+		if (GUI.Button (new Rect ( Screen.width / 2.5f, Screen.height / 2.6f, 156, 64),"option")) 
 		{
 			currState = MenuStates.Options;
 		}
-			GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 1.8f, 156, 64), options);
-			if (GUI.Button (new Rect (Screen.width / 2.5f, Screen.height / 1.4f, 156, 64),"")) 
+			if (GUI.Button (new Rect (Screen.width / 2.5f, Screen.height / 1.3f, 156, 64),"")) 
 			{
 				gameMgr.health = 10;
 				gameMgr.gears = 45;
@@ -307,7 +284,6 @@ public class EnemySpawn : MonoBehaviour
 				Destroy(SteamRollHappines);
 				Application.LoadLevel("NewMainMenu");
 			}
-			GUI.DrawTexture (new Rect (Screen.width / 2.5f, Screen.height / 1.4f, 156, 64), menu);
 			Time.timeScale = 0.001f;
 		}	
 
@@ -424,6 +400,24 @@ public class EnemySpawn : MonoBehaviour
 		GUI.DrawTexture(new Rect(Screen.width / 2.6f, Screen.height / 1.2f, 200, 80), pause);
 
 	}
+
+	//----------------------------------------------------------------------------
+
+	private void DrawVictory()
+	{
+		noEdit[0].SetActive(false);
+		noEdit[1].SetActive(false);
+		Time.timeScale = 0f;
+		GUI.DrawTexture (new Rect (Screen.width / 6f, Screen.height / 10f, Screen.width / 1.6f, Screen.height / 1.25f), Win);
+		if (GUI.Button (new Rect (Screen.width / 4.4f, Screen.height / 1.32f, Screen.width / 6.4f, Screen.height / 9f), ""))
+		{
+			gameMgr.health += 5;
+			gameMgr.gears += 30;
+			Application.LoadLevel(Application.loadedLevel + 1);
+		}
+
+	}
+
 	//----------------------------------------------------------------------------
 	
 		// Update is called once per frame
@@ -492,6 +486,7 @@ public class EnemySpawn : MonoBehaviour
 				go.GetComponent<Enemy> ().setSpawner (this);
 				go.GetComponent<Enemy> ().gameMgr = gameMgr;
 				targetCountSpeedy++;
+				//Enemu.count.add (go GameObject)
 		}
 
 		public virtual void SpawnTank ()

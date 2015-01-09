@@ -42,11 +42,6 @@ public class ButtonSavior : MonoBehaviour
 				Application.LoadLevel ("GameOverScreen");
 		}
 
-		public virtual void MainMenu ()
-		{
-				Application.LoadLevel ("MainMenu");
-		}
-
 		public virtual void NewMainMenu ()
 		{
 			Application.LoadLevel ("NewMainMenu");

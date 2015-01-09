@@ -106,7 +106,7 @@ public class Start_Menu_Beyond : MonoBehaviour
 		case  MenuStates.Options:
 			DrawOptions();
 			break;
-		case  MenuStates.Confirm_Quit:
+		case MenuStates.Confirm_Quit:
 			DrawConfirmQuit();
 			break;
 		}

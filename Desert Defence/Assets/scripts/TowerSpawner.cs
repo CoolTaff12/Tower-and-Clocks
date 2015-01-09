@@ -37,8 +37,12 @@ public class TowerSpawner : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{
-				gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
-				transform.renderer.material.color = new Color (0.2F, 0.3F, 0.4F, 0.3F);
+			gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+			transform.renderer.material.color = new Color (200F, 200F, 200F, 0.1F);
+			if(Application.loadedLevelName == ("LevelCave"))
+			{
+				transform.renderer.material.color = new Color (100F, 100F, 100F, 0.02F);
+			}
 		}
 	
 		// Update is called once per frame
@@ -113,9 +117,11 @@ public class TowerSpawner : MonoBehaviour
 
 		void OnMouseExit ()
 		{
-				transform.renderer.material.color = new Color (0.2F, 0.3F, 0.4F, 0.3F);
-
-
+			transform.renderer.material.color = new Color (200F, 200F, 200F, 0.1F);
+			if(Application.loadedLevelName == ("LevelCave"))
+			{
+				transform.renderer.material.color = new Color (100F, 100F, 100F, 0.02F);
+			}
 		}
 
 }
