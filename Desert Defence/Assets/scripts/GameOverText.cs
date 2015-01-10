@@ -9,8 +9,7 @@ public class GameOverText : MonoBehaviour
 		public GameObject Button2;
 		Text text;
 		public float highscore = 1f;
-	
-		// Use this for initialization
+
 		void Awake ()
 		{
 				Time.timeScale = 1f;
@@ -39,9 +38,6 @@ public class GameOverText : MonoBehaviour
 		if(highscore > 9f)
 		{
 			text.text = "Y o u r  f i n a l  s c o r e : " + "\t" + gameMgr.score;
-		}
-		if(highscore > 9f)
-		{
 			Button1.SetActive(true);
 			Button2.SetActive(true);
 		}
@@ -51,5 +47,5 @@ public class GameOverText : MonoBehaviour
 			Button2.SetActive(false);
 		}
 		
-		}
+	}
 }

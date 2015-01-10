@@ -66,6 +66,7 @@ public class Start_Menu_Beyond : MonoBehaviour
 		BGM[0].SetActive(true);
 		BGM[1].SetActive(false);
 		BGM[2].SetActive(false);
+		BGM[3].SetActive(false);
 		Audio2[0].SetActive(false);
 		Audio2[1].SetActive(true);
 		PlaySound(0);
@@ -106,71 +107,73 @@ public class Start_Menu_Beyond : MonoBehaviour
 		case  MenuStates.Options:
 			DrawOptions();
 			break;
-		case  MenuStates.Confirm_Quit:
+		case MenuStates.Confirm_Quit:
 			DrawConfirmQuit();
 			break;
 		}
 	}
 	private void DrawMainScreen() 
 	{
-		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 400, 412, 101), ""))
+		if (GUI.Button (new Rect (400, 180, 412, 101), ""))
 		{
 			PlaySound(0);
 			currState = MenuStates.Lvl;
 		}
-		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 400, 412, 101), startGame);
+		GUI.DrawTexture(new Rect(400, 180, 412, 101), startGame);
 		// Option Button
-		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 280, 412, 101), ""))
+		if (GUI.Button (new Rect (400, 300, 412, 101), ""))
 		{
 			PlaySound(0);
 			BGM[0].SetActive(false);
-			BGM[1].SetActive(true);
+			BGM[1].SetActive(false);
 			BGM[2].SetActive(false);
+			BGM[3].SetActive(true);
 			currState = MenuStates.How_To_Play;
 		}
-		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 280, 412, 101), HowToPlay);
+		GUI.DrawTexture(new Rect(400, 300, 412, 101), HowToPlay);
 		// How to Play Button
-		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 160, 412, 101), ""))
+		if (GUI.Button (new Rect (400, 420, 412, 101), ""))
 		{
 			PlaySound(0);
 			BGM[0].SetActive(false);
 			BGM[1].SetActive(false);
 			BGM[2].SetActive(true);
+			BGM[3].SetActive(false);
 			currState = MenuStates.Options;
 		}
-		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 160, 412, 101), Options);
-		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 40, 412, 101), ""))
+		GUI.DrawTexture(new Rect(400, 420, 412, 101), Options);
+		if (GUI.Button (new Rect (400, 540, 412, 101), ""))
 		{
 			PlaySound(0);
 			currState = MenuStates.Confirm_Quit;
 		}
-		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 40, 412, 101), quit);
-		if (GUI.Button (new Rect(Screen.width + 200, Screen.height + 120, Screen.width/3, Screen.height/9), ""))
+		GUI.DrawTexture(new Rect(400, 540, 412, 101), quit);
+		if (GUI.Button (new Rect(900, 700, Screen.width/3, Screen.height/9), ""))
 		{	
 			Application.LoadLevel("Credits");
 		}
-		GUI.DrawTexture(new Rect(Screen.width + 200, Screen.height + 120, Screen.width/3, Screen.height/9), Credit);
+		GUI.DrawTexture(new Rect(900, 700, Screen.width/3, Screen.height/9), Credit);
 	}
 	//---------------------------------------------------------------
 
 	private void DrawConfirmLvl()
 	{
-		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 300, 412, 101), ""))
+		if (GUI.Button (new Rect (400, 280, 412, 101), ""))
 		{
 			Application.LoadLevel("LevelOne");
 		}
-		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 300, 412, 101), Play);
-		if (GUI.Button (new Rect (Screen.width - 300, Screen.height - 180, 412, 101), ""))
+		GUI.DrawTexture(new Rect(400, 280, 412, 101), Play);
+		if (GUI.Button (new Rect (400, 400, 412, 101), ""))
 		{
 			Application.LoadLevel("Tutorial");
 		}
-		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 180, 412, 101), Tutorial);
-		if (GUI.Button (new Rect(Screen.width - 300, Screen.height, 412, 101), ""))
+		GUI.DrawTexture(new Rect(400, 400, 412, 101), Tutorial);
+		if (GUI.Button (new Rect(400, 580, 412, 101), ""))
 		{
 			PlaySound(1);
 			currState = MenuStates.Main;
 		}
-		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height, 412, 101), MainMenu);
+		GUI.DrawTexture(new Rect(400, 580, 412, 101), MainMenu);
 	}
 
 	//---------------------------------------------------------------
@@ -183,7 +186,7 @@ public class Start_Menu_Beyond : MonoBehaviour
 
 	private void DrawHow_To_Play()
 	{
-		GUI.Box (new Rect (140, 20, 1000, 110),"");
+		//GUI.Box (new Rect (140, 20, 1000, 110),"");
 		GUI.Label(new Rect(140, 20, 1000, 110),"\tBasic Rules"); 
 		GUI.DrawTexture (new Rect (Screen.width - 750, 130, 1200, 560),HTP1);
 		if (GUI.Button (new Rect(Screen.width - 360, Screen.height + 100, 412, 101), ""))
@@ -192,6 +195,7 @@ public class Start_Menu_Beyond : MonoBehaviour
 			BGM[0].SetActive(true);
 			BGM[1].SetActive(false);
 			BGM[2].SetActive(false);
+			BGM[3].SetActive(false);
 			currState = MenuStates.Main;
 		}
 		GUI.DrawTexture(new Rect(Screen.width - 360, Screen.height + 100, 412, 101), MainMenu);
@@ -204,7 +208,7 @@ public class Start_Menu_Beyond : MonoBehaviour
 
 	private void DrawHow_To_Play2()
 	{
-		GUI.Box (new Rect (140, 20, 1000, 110),"");
+	//	GUI.Box (new Rect (140, 20, 1000, 110),"");
 		GUI.Label(new Rect(140, 20, 1000, 110),"\tTowers"); 
 		GUI.DrawTexture(new Rect (Screen.width - 750, 130, 1200, 560),HTP2);
 
@@ -215,6 +219,7 @@ public class Start_Menu_Beyond : MonoBehaviour
 			BGM[0].SetActive(true);
 			BGM[1].SetActive(false);
 			BGM[2].SetActive(false);
+			BGM[3].SetActive(false);
 			currState = MenuStates.Main;
 		}
 		GUI.DrawTexture(new Rect(Screen.width - 360, Screen.height + 100, 412, 101), MainMenu);
@@ -232,7 +237,7 @@ public class Start_Menu_Beyond : MonoBehaviour
 
 	private void DrawHow_To_Play3()
 	{
-		GUI.Box (new Rect (140, 20, 1000, 110),"");
+	//	GUI.Box (new Rect (140, 20, 1000, 110),"");
 		GUI.Label(new Rect(140, 20, 1000, 110),"\tEnemies");
 		GUI.DrawTexture(new Rect (Screen.width - 750, 130, 1200, 560),HTP3);
 		
@@ -243,6 +248,7 @@ public class Start_Menu_Beyond : MonoBehaviour
 			BGM[0].SetActive(true);
 			BGM[1].SetActive(false);
 			BGM[2].SetActive(false);
+			BGM[3].SetActive(false);
 			currState = MenuStates.Main;
 		}
 		GUI.DrawTexture(new Rect(Screen.width - 360, Screen.height + 100, 412, 101), MainMenu);
@@ -260,7 +266,7 @@ public class Start_Menu_Beyond : MonoBehaviour
 
 	private void DrawHow_To_Play4()
 	{
-		GUI.Box (new Rect (140, 20, 1000, 110),"");
+	//	GUI.Box (new Rect (140, 20, 1000, 110),"");
 		GUI.Label(new Rect(140, 20, 1000, 110),"\tInterface");
 		GUI.DrawTexture(new Rect (Screen.width - 750, 130, 1200, 560),HTP4);
 		
@@ -271,6 +277,7 @@ public class Start_Menu_Beyond : MonoBehaviour
 			BGM[0].SetActive(true);
 			BGM[1].SetActive(false);
 			BGM[2].SetActive(false);
+			BGM[3].SetActive(false);
 			currState = MenuStates.Main;
 		}
 		GUI.DrawTexture(new Rect(Screen.width - 360, Screen.height + 100, 412, 101), MainMenu);
@@ -285,7 +292,7 @@ public class Start_Menu_Beyond : MonoBehaviour
 
 	private void DrawOptions()
 	{	
-		GUILayout.BeginArea(new Rect(0, 120, 1280, 800));
+		GUILayout.BeginArea(new Rect(-160, 100, 1280, 800));
 		GUILayout.BeginHorizontal();
 		GUILayout.FlexibleSpace();
 		GUILayout.Label("Select Music");
@@ -337,6 +344,7 @@ public class Start_Menu_Beyond : MonoBehaviour
 			BGM[0].SetActive(true);
 			BGM[1].SetActive(false);
 			BGM[2].SetActive(false);
+			BGM[3].SetActive(false);
 			currState = MenuStates.Main;
 		}
 		GUI.DrawTexture(new Rect(Screen.width - 760, Screen.height + 100, 412, 101), MainMenu);
@@ -346,7 +354,7 @@ public class Start_Menu_Beyond : MonoBehaviour
 	//------------------------------------------------------------
 	private void DrawConfirmQuit()
 	{
-		GUILayout.BeginArea(new Rect(0, 140, 1280, 800));
+		GUILayout.BeginArea(new Rect(-180, 180, 1280, 800));
 		GUILayout.BeginHorizontal();
 		GUILayout.FlexibleSpace();
 		GUILayout.Label("Do you want to leave us\nand let us bite the dust??");

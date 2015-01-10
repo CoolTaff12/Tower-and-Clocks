@@ -9,6 +9,8 @@ Project("{7A351A3D-5266-4617-99AA-A4A3386A0514}") = "Desert Defence", "Assembly-
 EndProject
 Project("{7A351A3D-5266-4617-99AA-A4A3386A0514}") = "Desert Defence", "Assembly-UnityScript-firstpass.unityproj", "{9EF783B8-7048-FEEE-B8C5-B8048FA8B78B}"
 EndProject
+Project("{7A351A3D-5266-4617-99AA-A4A3386A0514}") = "Desert Defence", "Assembly-UnityScript.unityproj", "{F9C3D5B0-AE16-AC8F-0DBE-A34C31CB5177}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,11 +33,18 @@ Global
 		{9EF783B8-7048-FEEE-B8C5-B8048FA8B78B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EF783B8-7048-FEEE-B8C5-B8048FA8B78B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EF783B8-7048-FEEE-B8C5-B8048FA8B78B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9C3D5B0-AE16-AC8F-0DBE-A34C31CB5177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9C3D5B0-AE16-AC8F-0DBE-A34C31CB5177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9C3D5B0-AE16-AC8F-0DBE-A34C31CB5177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9C3D5B0-AE16-AC8F-0DBE-A34C31CB5177}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 																																																																																			GlobalSection(MonoDevelopProperties) = preSolution
+																																																GlobalSection(MonoDevelopProperties) = preSolution
+																																														GlobalSection(MonoDevelopProperties) = preSolution
+																																																																											GlobalSection(MonoDevelopProperties) = preSolution
 															GlobalSection(MonoDevelopProperties) = preSolution
 																				GlobalSection(MonoDevelopProperties) = preSolution
 												GlobalSection(MonoDevelopProperties) = preSolution

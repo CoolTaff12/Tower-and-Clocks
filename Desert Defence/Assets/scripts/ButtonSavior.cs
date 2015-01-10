@@ -37,14 +37,16 @@ public class ButtonSavior : MonoBehaviour
 				ChangeLevel();
 				GameObject CrashMusic = GameObject.FindGameObjectWithTag("Music");
 				GameObject DestroyParty = GameObject.Find("Music Box 2");
+				GameObject ObliterateFun = GameObject.Find("Music Box 3");
+				GameObject TerimatetheJoy = GameObject.Find("Music Box 4");
+				GameObject SteamRollHappines = GameObject.Find("Music Box 5");
 				Destroy(CrashMusic);
 				Destroy(DestroyParty);
+				Destroy(ObliterateFun);
+				Destroy(TerimatetheJoy);
+				Destroy(SteamRollHappines);
+				gameMgr.enemiesInScene = 0;
 				Application.LoadLevel ("GameOverScreen");
-		}
-
-		public virtual void MainMenu ()
-		{
-				Application.LoadLevel ("MainMenu");
 		}
 
 		public virtual void NewMainMenu ()
@@ -90,11 +92,7 @@ public class ButtonSavior : MonoBehaviour
 			{
 				Destroy(gameObjects[i]);
 			}
-			/*if (gameObject.tag == "Target") 
-			{
-				Debug.Log("Boom");
-				Destroy (gameObject);
-			}*/
+			gameMgr.enemiesInScene = 0;
 		}
 
 		public virtual void LevelOne ()
@@ -102,17 +100,35 @@ public class ButtonSavior : MonoBehaviour
 				gameMgr.gears = gameMgr.startGears;
 				gameMgr.health = gameMgr.startHealth;
 				gameMgr.score = gameMgr.startScore;
-				gameMgr.lastLevel = 3;
+				gameMgr.lastLevel = 5;
 				Application.LoadLevel ("LevelOne");
 		}
 
 		public virtual void LevelTwo ()
 		{
-				gameMgr.gears = gameMgr.startGears;
-				gameMgr.health = gameMgr.startHealth;
-				gameMgr.score = gameMgr.startScore;
-				gameMgr.lastLevel = 4;
-				Application.LoadLevel ("LevelTwo");
+			gameMgr.gears = gameMgr.startGears;
+			gameMgr.health = gameMgr.startHealth;
+			gameMgr.score = gameMgr.startScore;
+			gameMgr.lastLevel = 6;
+			Application.LoadLevel ("LevelTwo");
+		}
+
+		public virtual void LevelFour ()
+		{
+			gameMgr.gears = gameMgr.startGears;
+			gameMgr.health = gameMgr.startHealth;
+			gameMgr.score = gameMgr.startScore;
+			gameMgr.lastLevel = 8;
+			Application.LoadLevel ("LevelFour");
+		}
+
+		public virtual void LevelSeven ()
+		{
+			gameMgr.gears = gameMgr.startGears;
+			gameMgr.health = gameMgr.startHealth;
+			gameMgr.score = gameMgr.startScore;
+			gameMgr.lastLevel = 11;
+			Application.LoadLevel ("LevelSeven");
 		}
 
 		public virtual void Retry ()

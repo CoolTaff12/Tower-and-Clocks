@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 		public int
 				health;
 		public int startHealth;
+		public int enemiesInScene = 0;
 		[HideInInspector]
 		public int
 				gears;
@@ -20,14 +21,12 @@ public class GameManager : MonoBehaviour
 		public bool firstScene = true;
 
 
-
 		// Use this for initialization
 		void Awake ()
 		{
 				gears = startGears;
 				health = startHealth;
 				score = startScore;
-
 
 		}
 	

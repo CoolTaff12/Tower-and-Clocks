@@ -7,16 +7,17 @@ public class CameraControl : MonoBehaviour
 	public Camera miniCamera2;
 	public Camera miniCamera3;
 	public int located = 0;
-	public int view = 0;
+	public int view = 1;
 	//------------------------------
 	public float speed;	
 	public Vector3 speedV;
 	public bool projectionChange;
+	private Vector3 PoW;
 	
 		// Use this for initialization
 		void Start ()
 		{
-		
+
 		}
 	
 		// Update is called once per frame
@@ -64,25 +65,40 @@ public class CameraControl : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.P))
 		{
 			view ++;
-		}
-			
-		if (view == 0)
-		{ 
-			Camera.main.orthographic = false;
-			projectionChange = true;
-		}
+			if (view == 0)
+			{ 
+				view++;
+			}
+	
 
-		if (view == 1)
-		{
-			Camera.main.orthographic = true;
-			projectionChange = false;
-		}
+			if (view == 1)
+			{ 
+				Camera.main.orthographic = true;
+				PoW = transform.position;
+				PoW.y += 10.0f;
+				transform.position = PoW;
+				projectionChange = false;
+			}
 
-		if (view == 2)							
-		{
-			view = 0;	
-		}
+			if (view == 2)
+			{ 
+				Camera.main.orthographic = false;
+				PoW = transform.position;
+				PoW.y -= 10.0f;
+				transform.position = PoW;
+				projectionChange = true;
+			}
 
+			if (view == 3)							
+			{
+				Camera.main.orthographic = true;
+				PoW = transform.position;
+				PoW.y += 10.0f;
+				transform.position = PoW;
+				projectionChange = false;
+				view = 1;	
+			}
+		}
 				//Change the main cameras angle.
 		/*		if (Input.GetKey(KeyCode.DownArrow) && transform.rotation.x < 52.21781)
 				{
