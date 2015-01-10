@@ -1,18 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\Enemy.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\Playground\Assets\ShaderForge\Example Assets\Shaders\VertexAnimation.shader">
     <Files>
-      <File FileName="Assets\scripts\EnemySpawn.cs" Line="487" Column="25" />
-      <File FileName="Assets\scripts\GameManager.cs" Line="17" Column="5" />
-      <File FileName="Assets\New Import\New Scripts\CameraControl.cs" Line="1" Column="1" />
-      <File FileName="Assets\scripts\FadeAway.cs" Line="1" Column="1" />
-      <File FileName="Assets\New Import\New Scripts\Start_Menu_Beyond.cs" Line="1" Column="1" />
-      <File FileName="Assets\New Import\New Scripts\GUIX.cs" Line="1" Column="1" />
-      <File FileName="Assets\scripts\SaveManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\New Import\New Scripts\Main_Menu_Music_Box.cs" Line="1" Column="1" />
-      <File FileName="Assets\New Import\New Scripts\Explosion_Removal.cs" Line="1" Column="1" />
-      <File FileName="Assets\scripts\TowerSpawner.cs" Line="40" Column="75" />
-      <File FileName="Assets\scripts\Enemy.cs" Line="82" Column="20" />
+      <File FileName="..\..\..\Playground\Assets\ShaderForge\Example Assets\Shaders\VertexAnimation.shader" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
