@@ -8,10 +8,14 @@ public class Animation_Menu : MonoBehaviour
 	public float framesPerSecond;
 	private SpriteRenderer spriteRenderer;
 
+	void Awake ()
+	{
+
+	}
+
 	void Start () 
 	{
 		spriteRenderer = renderer as SpriteRenderer;
-		
 	}
 	
 	// Update is called once per frame

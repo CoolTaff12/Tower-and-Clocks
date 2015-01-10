@@ -18,7 +18,7 @@ public class UIText : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-				text.text = "Health:\n" + gameMgr.health + "\nGears:\n" + gameMgr.gears + "\nScore:\n" + gameMgr.score;
+				text.text = "\n" + gameMgr.health + "\n\n" + gameMgr.gears + "\nScore:\n" + gameMgr.score;
 	
 		}
 }

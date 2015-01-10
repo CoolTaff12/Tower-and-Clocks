@@ -46,7 +46,8 @@ public class EnemySpawn : MonoBehaviour
 		public Texture2D pause;
 
 		//-----------------------------------------------
-		private enum MenuStates { Runs, PausedMenu, Help1, Help2, Help3, Help4, Options, Tutorial1, Tutorial2, Victory};
+		private enum MenuStates { Runs, PausedMenu, Help1, Help2, Help3, Help4, Options, Victory, 
+									Tutorial1, Tutorial2,Tutorial3,Tutorial4};
 		private MenuStates currState;
 		public GUISkin trueMenu;
 		public Texture2D HTP1;
@@ -87,6 +88,12 @@ public class EnemySpawn : MonoBehaviour
 			gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 			wave = 1f;
 			spawnTimer = 10;
+			if(Application.loadedLevelName ==("Tutorial"))
+		 	{
+				noEdit[0].SetActive(false);
+				noEdit[1].SetActive(false);
+				spawnTimer = 30;
+			}
 		}
 
 		void OnGUI()
@@ -99,8 +106,18 @@ public class EnemySpawn : MonoBehaviour
 			switch(currState) 
 			{
 				//For Tutorial Level Only--------------------
-				
-
+				case MenuStates.Tutorial1:
+					DrawTutorial1();
+					break;
+				case MenuStates.Tutorial2:
+					DrawTutorial2();
+					break;
+				case MenuStates.Tutorial3:
+					DrawTutorial3();
+					break;
+				case MenuStates.Tutorial4:
+					DrawTutorial4();
+					break;
 				//-------------------------------------------
 				case MenuStates.Runs:
 					DrawRuns();
@@ -127,108 +144,72 @@ public class EnemySpawn : MonoBehaviour
 					DrawVictory();
 					break;
 			}
-		if (wave > 14 
-		   	//&& EnemyTarget.Length == 0
+		if (wave > 10 
+		    && gameMgr.enemiesInScene == 0
 		   	&& Application.loadedLevelName ==("Tutorial"))
 		{
 			currState = MenuStates.Victory;
 		}
-		if (wave > 16 
-		    //&& EnemyTarget.Length == 0
+		if (wave > 14 
+		    && gameMgr.enemiesInScene == 0
 		    && Application.loadedLevelName ==("LevelOne"))
 		{
 			currState = MenuStates.Victory;
 		}
 
-		if (wave > 18 
-		 //   && EnemyTarget.Length == 0
+		if (wave > 16 
+		 	&& gameMgr.enemiesInScene == 0
 		    && Application.loadedLevelName ==("LevelTwo"))
 		{
 			currState = MenuStates.Victory;
 		}
 
-		if (wave > 22 
-		   // && EnemyTarget.Length == 0
+		if (wave > 20 
+		    && gameMgr.enemiesInScene == 0
 		    && Application.loadedLevelName ==("LevelFour"))
 		{
 			currState = MenuStates.Victory;
 		}
 
-		if (wave > 24 
-		  //  && EnemyTarget.Length == 0
+		if (wave > 22 
+		    && gameMgr.enemiesInScene == 0
 		    && Application.loadedLevelName ==("Herman_27"))
 		{
-			Time.timeScale = 0f;
-			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
-			{
-				gameMgr.health += 5;
-				gameMgr.gears += 30;
-				Application.LoadLevel(Application.loadedLevel + 1);
-			}
+			currState = MenuStates.Victory;
 		}
 
-		if (wave > 28 
-	   		//&& EnemyTarget.Length == 0
+		if (wave > 26 
+	   		&& gameMgr.enemiesInScene == 0
 		    && Application.loadedLevelName ==("LevelSeven"))
 		{
-			Time.timeScale = 0f;
-			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
-			{
-				gameMgr.health += 5;
-				gameMgr.gears += 30;
-				Application.LoadLevel(Application.loadedLevel + 1);
-			}
+			currState = MenuStates.Victory;
+		}
+
+		if (wave > 30 
+		    && gameMgr.enemiesInScene == 0
+		    && Application.loadedLevelName ==("LevelEight"))
+		{
+			currState = MenuStates.Victory;
 		}
 
 		if (wave > 32 
-		 //   && EnemyTarget.Length == 0
-		    && Application.loadedLevelName ==("LevelEight"))
+		    && gameMgr.enemiesInScene == 0
+		    && Application.loadedLevelName ==("Herman_20"))
 		{
-			Time.timeScale = 0f;
-			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
-			{
-				gameMgr.health += 5;
-				gameMgr.gears += 30;
-				Application.LoadLevel(Application.loadedLevel + 1);
-			}
+			currState = MenuStates.Victory;
 		}
 
 		if (wave > 34 
-		   // && EnemyTarget.Length == 0
-		    && Application.loadedLevelName ==("Herman_20"))
-		{
-			Time.timeScale = 0f;
-			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
-			{
-				gameMgr.health += 5;
-				gameMgr.gears += 30;
-				Application.LoadLevel(Application.loadedLevel + 1);
-			}
-		}
-
-		if (wave > 36 
-		   // && EnemyTarget.Length == 0
+		    && gameMgr.enemiesInScene == 0
 		    && Application.loadedLevelName ==("LevelCave"))
 		{
-			Time.timeScale = 0f;
-			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
-			{
-				gameMgr.health += 5;
-				gameMgr.gears += 30;
-				Application.LoadLevel(Application.loadedLevel + 1);
-			}
+			currState = MenuStates.Victory;
 		}
-		if (wave > 40 
-		   // && EnemyTarget.Length == 0
+		if (wave > 38 
+		   	&& gameMgr.enemiesInScene == 0
 		    && Application.loadedLevelName ==("LevelJungle"))
 		{
-			Time.timeScale = 0f;
-			if (GUI.Button (new Rect (300, 400, 200, 101), "Yes!"))
-			{
-				gameMgr.health += 5;
-				gameMgr.gears += 30;
-				Application.LoadLevel("Credits");
-			}
+			Application.LoadLevel("Credits");
 		}
 	}
 
@@ -270,6 +251,7 @@ public class EnemySpawn : MonoBehaviour
 			{
 				gameMgr.health = 10;
 				gameMgr.gears = 45;
+				gameMgr.enemiesInScene = 0;
 				GameObject CrashMusic = GameObject.FindGameObjectWithTag("Music");
 				GameObject DestroyParty = GameObject.Find("Music Box 2");
 				GameObject ObliterateFun = GameObject.Find("Music Box 3");
@@ -405,16 +387,46 @@ public class EnemySpawn : MonoBehaviour
 	{
 		noEdit[0].SetActive(false);
 		noEdit[1].SetActive(false);
-		Time.timeScale = 0f;
+		Time.timeScale = 0.000001f;
 		GUI.DrawTexture (new Rect (Screen.width / 6f, Screen.height / 10f, Screen.width / 1.6f, Screen.height / 1.25f), Win);
 		if (GUI.Button (new Rect (Screen.width / 4.4f, Screen.height / 1.32f, Screen.width / 6.4f, Screen.height / 9f), ""))
 		{
 			gameMgr.health += 5;
 			gameMgr.gears += 30;
+			gameMgr.lastLevel ++;
+			gameMgr.enemiesInScene = 0;
 			Application.LoadLevel(Application.loadedLevel + 1);
 		}
 
 	}
+
+	//----------------------------------------------------------------------------
+	
+	private void DrawTutorial1()
+	{
+		noEdit[0].SetActive(false);
+		noEdit[1].SetActive(false);
+		Time.timeScale = 0.00001f;
+	//	GUI.DrawTexture (new Rect (Screen.width / 6f, Screen.height / 10f, Screen.width / 1.6f, Screen.height / 1.25f), Win);
+	}
+
+	private void DrawTutorial2()
+	{
+		//	GUI.DrawTexture (new Rect (Screen.width / 6f, Screen.height / 10f, Screen.width / 1.6f, Screen.height / 1.25f), Win);
+	}
+
+	private void DrawTutorial3()
+	{
+		noEdit[0].SetActive(false);
+		//	GUI.DrawTexture (new Rect (Screen.width / 6f, Screen.height / 10f, Screen.width / 1.6f, Screen.height / 1.25f), Win);
+	}
+
+	private void DrawTutorial4()
+	{
+		noEdit[1].SetActive(false);
+		//	GUI.DrawTexture (new Rect (Screen.width / 6f, Screen.height / 10f, Screen.width / 1.6f, Screen.height / 1.25f), Win);
+	}
+
 
 	//----------------------------------------------------------------------------
 	
@@ -475,6 +487,7 @@ public class EnemySpawn : MonoBehaviour
 				GameObject go = Instantiate (normalPrf, transform.position, Quaternion.identity) as GameObject;
 				go.GetComponent<Enemy> ().setSpawner (this);
 				go.GetComponent<Enemy> ().gameMgr = gameMgr;
+				gameMgr.enemiesInScene++;
 				targetCountNormal++;
 				
 		}
@@ -484,6 +497,7 @@ public class EnemySpawn : MonoBehaviour
 				GameObject go = Instantiate (speedyPrf, transform.position, Quaternion.identity) as GameObject;
 				go.GetComponent<Enemy> ().setSpawner (this);
 				go.GetComponent<Enemy> ().gameMgr = gameMgr;
+				gameMgr.enemiesInScene++;
 				targetCountSpeedy++;
 				//Enemu.count.add (go GameObject)
 		}
@@ -493,6 +507,7 @@ public class EnemySpawn : MonoBehaviour
 				GameObject go = Instantiate (tankyPrf, transform.position, Quaternion.identity) as GameObject;
 				go.GetComponent<Enemy> ().setSpawner (this);
 				go.GetComponent<Enemy> ().gameMgr = gameMgr;
+				gameMgr.enemiesInScene++;
 				targetCountTank++;
 		}
 
